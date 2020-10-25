@@ -45,6 +45,7 @@
 		50831F0C2545E94300DC7EF6 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F0B2545E94300DC7EF6 /* VisualEffectView.swift */; };
 		50831F162545EA1400DC7EF6 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F152545EA1400DC7EF6 /* ShareSheet.swift */; };
 		50831F2C2545EABF00DC7EF6 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F2B2545EABF00DC7EF6 /* VideoPlayer.swift */; };
+		50831F3D2545EFD700DC7EF6 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F3C2545EFD700DC7EF6 /* SafariView.swift */; };
 		OBJ_30 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_41 /* SwiftUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SwiftUIKitTests.swift */; };
 		OBJ_42 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
@@ -93,6 +94,7 @@
 		50831F0B2545E94300DC7EF6 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		50831F152545EA1400DC7EF6 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		50831F2B2545EABF00DC7EF6 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		50831F3C2545EFD700DC7EF6 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		OBJ_12 /* SwiftUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKitTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				50831E892545D35900DC7EF6 /* RoundedCorner.swift */,
 				50831F152545EA1400DC7EF6 /* ShareSheet.swift */,
 				50831F2B2545EABF00DC7EF6 /* VideoPlayer.swift */,
+				50831F3C2545EFD700DC7EF6 /* SafariView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -199,7 +202,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -208,7 +211,6 @@
 				OBJ_14 /* Products */,
 				OBJ_17 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -297,7 +299,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -334,6 +336,7 @@
 				50831EE22545E0FE00DC7EF6 /* IfLetView.swift in Sources */,
 				50831E9C2545D4A400DC7EF6 /* PageControl.swift in Sources */,
 				50831E902545D3C000DC7EF6 /* ActivityIndicator.swift in Sources */,
+				50831F3D2545EFD700DC7EF6 /* SafariView.swift in Sources */,
 				50831ED42545E09A00DC7EF6 /* View+Embed.swift in Sources */,
 				50831F022545E6D600DC7EF6 /* NavigationBarColor.swift in Sources */,
 				50831EF82545E46100DC7EF6 /* NavigationControllerConfigurator.swift in Sources */,
