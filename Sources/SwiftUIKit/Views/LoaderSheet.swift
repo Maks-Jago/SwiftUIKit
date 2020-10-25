@@ -9,13 +9,18 @@ import SwiftUI
 
 public extension View {
     func loaderSheet(isPresented: Binding<Bool>, title: String = "Loading...") -> some View {
-        ModifiedContent(content: self, modifier: LoaderSheetModifier(isPresented: isPresented.animation(), title: title))
+        self.modifier(LoaderSheet(isPresented: isPresented.animation(), title: title))
     }
 }
 
-public struct LoaderSheetModifier: ViewModifier {
+public struct LoaderSheet: ViewModifier {
     @Binding public var isPresented: Bool
     public let title: String
+    
+    public init(isPresented: Binding<Bool>, title: String) {
+        self._isPresented = isPresented
+        self.title = title
+    }
     
     public func body(content: Content) -> some View {
         GeometryReader { proxy in

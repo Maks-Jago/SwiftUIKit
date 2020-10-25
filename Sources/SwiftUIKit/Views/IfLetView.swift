@@ -7,16 +7,16 @@
 
 import SwiftUI
 
-struct IfLetView<Value, Content: View>: View {
-    let value: Value?
-    var content: (Value) -> Content
+public struct IfLetView<Value, Content: View>: View {
+    public let value: Value?
+    public var content: (Value) -> Content
     
-    init(value: Value?, @ViewBuilder content: @escaping (Value) -> Content) {
+    public init(value: Value?, @ViewBuilder content: @escaping (Value) -> Content) {
         self.value = value
         self.content = content
     }
     
-    var body: some View {
+    public var body: some View {
         Group {
             if value != nil {
                 content(value!)

@@ -11,6 +11,10 @@ import AVKit
 public struct VideoPlayerView: UIViewControllerRepresentable {
     public var videoUrlPath: String
     
+    public init(videoUrlPath: String) {
+        self.videoUrlPath = videoUrlPath
+    }
+    
     public func makeUIViewController(context: Context) -> AVPlayerViewController {
         let controller = AVPlayerViewController()
         

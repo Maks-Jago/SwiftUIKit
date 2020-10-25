@@ -45,7 +45,6 @@
 		50831F0C2545E94300DC7EF6 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F0B2545E94300DC7EF6 /* VisualEffectView.swift */; };
 		50831F162545EA1400DC7EF6 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F152545EA1400DC7EF6 /* ShareSheet.swift */; };
 		50831F2C2545EABF00DC7EF6 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F2B2545EABF00DC7EF6 /* VideoPlayer.swift */; };
-		OBJ_23 /* SwiftUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* SwiftUIKit.swift */; };
 		OBJ_30 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_41 /* SwiftUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SwiftUIKitTests.swift */; };
 		OBJ_42 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
@@ -98,7 +97,6 @@
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* SwiftUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKit.swift; sourceTree = "<group>"; };
 		"SwiftUIKit::SwiftUIKit::Product" /* SwiftUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"SwiftUIKit::SwiftUIKitTests::Product" /* SwiftUIKitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = SwiftUIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -224,7 +222,6 @@
 		OBJ_8 /* SwiftUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* SwiftUIKit.swift */,
 				50831E4E2545CC1E00DC7EF6 /* Common */,
 				50831E4D2545CBB400DC7EF6 /* Extensions */,
 				50831E732545D15F00DC7EF6 /* ViewModifiers */,
@@ -324,7 +321,6 @@
 				50831E8A2545D35900DC7EF6 /* RoundedCorner.swift in Sources */,
 				50831E542545CCB000DC7EF6 /* Common.swift in Sources */,
 				50831E802545D2B700DC7EF6 /* IfLetViewPlaceholder.swift in Sources */,
-				OBJ_23 /* SwiftUIKit.swift in Sources */,
 				50831F162545EA1400DC7EF6 /* ShareSheet.swift in Sources */,
 				50831EC02545DFDA00DC7EF6 /* Image.swift in Sources */,
 				50831EA22545D88B00DC7EF6 /* PagerView.swift in Sources */,

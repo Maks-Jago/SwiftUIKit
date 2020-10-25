@@ -14,7 +14,11 @@ public extension View {
 }
 
 public struct NavigationControllerConfigurator: UIViewControllerRepresentable {
-    public var configure: (UINavigationController) -> Void = { _ in }
+    public var configure: (UINavigationController) -> Void
+    
+    public init(configure: @escaping (UINavigationController) -> Void) {
+        self.configure = configure
+    }
     
     public func makeUIViewController(context: Context) -> UIViewController {
         UIViewController()

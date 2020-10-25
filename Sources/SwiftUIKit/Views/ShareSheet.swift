@@ -15,6 +15,13 @@ public struct ShareSheet: UIViewControllerRepresentable {
     public var excludedActivityTypes: [UIActivity.ActivityType]? = nil
     public var callback: Callback? = nil
     
+    public init(activityItems: [Any], applicationActivities: [UIActivity]? = nil, excludedActivityTypes: [UIActivity.ActivityType]? = nil, callback: ShareSheet.Callback? = nil) {
+        self.activityItems = activityItems
+        self.applicationActivities = applicationActivities
+        self.excludedActivityTypes = excludedActivityTypes
+        self.callback = callback
+    }
+    
     public func makeUIViewController(context: Context) -> UIActivityViewController {
         let controller = UIActivityViewController(
             activityItems: activityItems,

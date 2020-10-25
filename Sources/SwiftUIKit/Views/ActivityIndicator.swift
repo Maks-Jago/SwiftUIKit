@@ -8,9 +8,13 @@
 import SwiftUI
 
 public struct ActivityIndicator: UIViewRepresentable {
-    
     @Binding public var isAnimating: Bool
     public let style: UIActivityIndicatorView.Style
+    
+    public init(isAnimating: Binding<Bool>, style: UIActivityIndicatorView.Style) {
+        self._isAnimating = isAnimating
+        self.style = style
+    }
     
     public func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
         let indicator = UIActivityIndicatorView(style: style)
