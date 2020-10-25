@@ -46,6 +46,7 @@
 		50831F162545EA1400DC7EF6 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F152545EA1400DC7EF6 /* ShareSheet.swift */; };
 		50831F2C2545EABF00DC7EF6 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F2B2545EABF00DC7EF6 /* VideoPlayer.swift */; };
 		50831F3D2545EFD700DC7EF6 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F3C2545EFD700DC7EF6 /* SafariView.swift */; };
+		50831FBB2545F65000DC7EF6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831FBA2545F65000DC7EF6 /* Color.swift */; };
 		OBJ_30 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_41 /* SwiftUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SwiftUIKitTests.swift */; };
 		OBJ_42 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
@@ -95,6 +96,7 @@
 		50831F152545EA1400DC7EF6 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		50831F2B2545EABF00DC7EF6 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		50831F3C2545EFD700DC7EF6 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		50831FBA2545F65000DC7EF6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		OBJ_12 /* SwiftUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKitTests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -128,12 +130,13 @@
 				50831E5F2545CEF400DC7EF6 /* Binding.swift */,
 				50831EAF2545DF5700DC7EF6 /* Binding+Observing.swift */,
 				50831EB92545DFC200DC7EF6 /* Button.swift */,
+				50831FBA2545F65000DC7EF6 /* Color.swift */,
 				50831EBF2545DFDA00DC7EF6 /* Image.swift */,
 				50831EC52545E00E00DC7EF6 /* PreviewDevice.swift */,
+				50831EF12545E21400DC7EF6 /* String.swift */,
 				50831E6D2545D11C00DC7EF6 /* UIApplication.swift */,
 				50831E592545CE3C00DC7EF6 /* View.swift */,
 				50831ED32545E09A00DC7EF6 /* View+Embed.swift */,
-				50831EF12545E21400DC7EF6 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				50831E752545D1DD00DC7EF6 /* SwipeToDismiss.swift in Sources */,
 				50831F2C2545EABF00DC7EF6 /* VideoPlayer.swift in Sources */,
 				50831EE22545E0FE00DC7EF6 /* IfLetView.swift in Sources */,
+				50831FBB2545F65000DC7EF6 /* Color.swift in Sources */,
 				50831E9C2545D4A400DC7EF6 /* PageControl.swift in Sources */,
 				50831E902545D3C000DC7EF6 /* ActivityIndicator.swift in Sources */,
 				50831F3D2545EFD700DC7EF6 /* SafariView.swift in Sources */,
