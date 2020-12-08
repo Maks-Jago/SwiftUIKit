@@ -14,6 +14,10 @@ public extension View {
 }
 
 public extension NavigationLink where Label == EmptyView {
+    init(destination: Destination, isActive: Binding<Bool>) {
+        self.init(destination: destination, isActive: isActive) { EmptyView() }
+    }
+    
     init(isActive: Binding<Bool>, @ViewBuilder destination: @escaping () -> Destination) {
         self.init(destination: destination(), isActive: isActive) { EmptyView() }
     }
