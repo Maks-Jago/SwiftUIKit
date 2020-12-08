@@ -47,9 +47,8 @@
 		50831F2C2545EABF00DC7EF6 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F2B2545EABF00DC7EF6 /* VideoPlayer.swift */; };
 		50831F3D2545EFD700DC7EF6 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F3C2545EFD700DC7EF6 /* SafariView.swift */; };
 		50831FBB2545F65000DC7EF6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831FBA2545F65000DC7EF6 /* Color.swift */; };
+		50EAE867257F6BFD0058F5A0 /* NavigationLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EAE866257F6BFD0058F5A0 /* NavigationLink.swift */; };
 		OBJ_30 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
-		OBJ_41 /* SwiftUIKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* SwiftUIKitTests.swift */; };
-		OBJ_42 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
 		OBJ_44 /* SwiftUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftUIKit::SwiftUIKit::Product" /* SwiftUIKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -97,8 +96,7 @@
 		50831F2B2545EABF00DC7EF6 /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		50831F3C2545EFD700DC7EF6 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		50831FBA2545F65000DC7EF6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		OBJ_12 /* SwiftUIKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIKitTests.swift; sourceTree = "<group>"; };
-		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
+		50EAE866257F6BFD0058F5A0 /* NavigationLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationLink.swift; sourceTree = "<group>"; };
 		OBJ_17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"SwiftUIKit::SwiftUIKit::Product" /* SwiftUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +135,7 @@
 				50831E6D2545D11C00DC7EF6 /* UIApplication.swift */,
 				50831E592545CE3C00DC7EF6 /* View.swift */,
 				50831ED32545E09A00DC7EF6 /* View+Embed.swift */,
+				50EAE866257F6BFD0058F5A0 /* NavigationLink.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -178,24 +177,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		OBJ_10 /* Tests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_11 /* SwiftUIKitTests */,
-			);
-			name = Tests;
-			sourceTree = SOURCE_ROOT;
-		};
-		OBJ_11 /* SwiftUIKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				OBJ_12 /* SwiftUIKitTests.swift */,
-				OBJ_13 /* XCTestManifests.swift */,
-			);
-			name = SwiftUIKitTests;
-			path = Tests/SwiftUIKitTests;
-			sourceTree = SOURCE_ROOT;
-		};
 		OBJ_14 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -210,7 +191,6 @@
 			children = (
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
-				OBJ_10 /* Tests */,
 				OBJ_14 /* Products */,
 				OBJ_17 /* README.md */,
 			);
@@ -341,6 +321,7 @@
 				50831E9C2545D4A400DC7EF6 /* PageControl.swift in Sources */,
 				50831E902545D3C000DC7EF6 /* ActivityIndicator.swift in Sources */,
 				50831F3D2545EFD700DC7EF6 /* SafariView.swift in Sources */,
+				50EAE867257F6BFD0058F5A0 /* NavigationLink.swift in Sources */,
 				50831ED42545E09A00DC7EF6 /* View+Embed.swift in Sources */,
 				50831F022545E6D600DC7EF6 /* NavigationBarColor.swift in Sources */,
 				50831EF82545E46100DC7EF6 /* NavigationControllerConfigurator.swift in Sources */,
@@ -361,8 +342,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_41 /* SwiftUIKitTests.swift in Sources */,
-				OBJ_42 /* XCTestManifests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

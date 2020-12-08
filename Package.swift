@@ -24,10 +24,6 @@ let package = Package(
         .target(
             name: "SwiftUIKit",
             dependencies: [],
-            path: "Sources"),
-        .testTarget(
-            name: "SwiftUIKitTests",
-            dependencies: ["SwiftUIKit"],
-            path: "Tests"),
+            path: "Sources")
     ]
 )
