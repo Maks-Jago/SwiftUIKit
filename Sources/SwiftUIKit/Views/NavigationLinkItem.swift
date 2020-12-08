@@ -12,6 +12,12 @@ public struct NavigationLinkItem<I: Identifiable, D: View, L: View>: View {
     public var destination: (I) -> D
     public var label: () -> L
     
+    public init(item: Binding<I?>, @ViewBuilder destination: @escaping (I) -> D, @ViewBuilder label: @escaping () -> L) {
+        self.item = item
+        self.destination = destination
+        self.label = label
+    }
+    
     private var isActive: Binding<Bool> {
         Binding(
             get: { item.wrappedValue != nil },
