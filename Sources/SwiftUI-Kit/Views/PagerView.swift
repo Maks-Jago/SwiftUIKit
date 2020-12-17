@@ -33,7 +33,14 @@ public struct PagerView<Page: View>: View {
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: dispayPagesIndicator ? .always : .never))
         } else {
-            PageViewController(controllers: pages.map { UIHostingController(rootView: $0) }, currentPage: $pageSelection)
+            PageViewController(
+                controllers: pages.map {
+                    let hostingController = UIHostingController(rootView: $0)
+                    hostingController.view.backgroundColor = .clear
+                    return hostingController
+                },
+                currentPage: $pageSelection
+            )
         }
     }
 }
@@ -68,7 +75,8 @@ private struct PageViewController: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIPageViewController {
         let pageViewController = UIPageViewController(
             transitionStyle: .scroll,
-            navigationOrientation: .horizontal)
+            navigationOrientation: .horizontal
+        )
         pageViewController.dataSource = context.coordinator
         pageViewController.delegate = context.coordinator
         
@@ -80,11 +88,10 @@ private struct PageViewController: UIViewControllerRepresentable {
             return
         }
         context.coordinator.parent = self
-        pageViewController.setViewControllers(
-            [controllers[currentPage]], direction: .forward, animated: true)
+        pageViewController.setViewControllers([controllers[currentPage]], direction: .forward, animated: false)
     }
     
-    class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+    final class Coordinator: NSObject, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
         var parent: PageViewController
         
         init(_ pageViewController: PageViewController) {
@@ -93,7 +100,8 @@ private struct PageViewController: UIViewControllerRepresentable {
         
         func pageViewController(
             _ pageViewController: UIPageViewController,
-            viewControllerBefore viewController: UIViewController) -> UIViewController? {
+            viewControllerBefore viewController: UIViewController
+        ) -> UIViewController? {
             guard let index = parent.controllers.firstIndex(of: viewController) else {
                 return nil
             }
@@ -105,7 +113,8 @@ private struct PageViewController: UIViewControllerRepresentable {
         
         func pageViewController(
             _ pageViewController: UIPageViewController,
-            viewControllerAfter viewController: UIViewController) -> UIViewController? {
+            viewControllerAfter viewController: UIViewController
+        ) -> UIViewController? {
             guard let index = parent.controllers.firstIndex(of: viewController) else {
                 return nil
             }
@@ -118,7 +127,8 @@ private struct PageViewController: UIViewControllerRepresentable {
         func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
             if completed,
                let visibleViewController = pageViewController.viewControllers?.first,
-               let index = parent.controllers.firstIndex(of: visibleViewController) {
+               let index = parent.controllers.firstIndex(of: visibleViewController)
+            {
                 parent.currentPage = index
             }
         }
