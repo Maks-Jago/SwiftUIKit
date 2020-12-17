@@ -93,7 +93,7 @@ private struct PageViewController: UIViewControllerRepresentable {
         let newHash = controllers.reduce(0) { $0 &+ $1.hashValue }
         
         if currentHash != newHash {
-            pageViewController.setViewControllers(controllers, direction: .forward, animated: true)
+            pageViewController.setViewControllers([controllers[currentPage]], direction: .forward, animated: true)
         }
     }
     
