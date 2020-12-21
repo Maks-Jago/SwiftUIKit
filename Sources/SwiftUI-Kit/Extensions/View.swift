@@ -37,3 +37,9 @@ public extension View {
         }
     }
 }
+
+public extension View where Self: Equatable {
+    func equatable() -> EquatableView<Self> {
+        EquatableView(content: self)
+    }
+}
