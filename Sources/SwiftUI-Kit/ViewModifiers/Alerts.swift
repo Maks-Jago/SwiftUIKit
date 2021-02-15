@@ -8,7 +8,11 @@
 import SwiftUI
 
 public extension View {
-    func errorAlert(error: Binding<String?>, title: String = "Error", dismissButtonTitle: String = "Ok") -> some View {
+    func errorAlert(
+        error: Binding<String?>,
+        title: String = Bundle.main.localizedString(forKey: "Error", value: nil, table: nil),
+        dismissButtonTitle: String = Bundle.main.localizedString(forKey: "Ok", value: nil, table: nil)
+    ) -> some View {
         self.alert(item: error) {
             Alert(title: Text(title), message: Text($0), dismissButton: .default(Text(dismissButtonTitle)))
         }
@@ -16,7 +20,11 @@ public extension View {
 }
 
 public extension View {
-    func messageAlert(message: Binding<String?>, title: String = "Success", dismissButtonTitle: String = "Ok") -> some View {
+    func messageAlert(
+        message: Binding<String?>,
+        title: String = Bundle.main.localizedString(forKey: "Success", value: nil, table: nil),
+        dismissButtonTitle: String = Bundle.main.localizedString(forKey: "Ok", value: nil, table: nil)
+    ) -> some View {
         self.alert(item: message) {
             Alert(title: Text(title), message: Text($0), dismissButton: .default(Text(dismissButtonTitle)))
         }
