@@ -8,7 +8,7 @@
 import SwiftUI
 
 public extension View {
-    func loaderSheet(isPresented: Binding<Bool>, title: String = "Loading...") -> some View {
+    func loaderSheet(isPresented: Binding<Bool>, title: String = Bundle.main.localizedString(forKey: "Loading...", value: nil, table: nil)) -> some View {
         self.modifier(LoaderSheet(isPresented: isPresented.animation(), title: title))
     }
 }
