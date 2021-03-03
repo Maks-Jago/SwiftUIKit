@@ -8,7 +8,8 @@
 import SwiftUI
 
 public extension PreviewDevice {
-    static let iPhoneSE: PreviewDevice = .init(rawValue: "iPhone SE")
+    static let iPhoneSE: PreviewDevice = .init(rawValue: "iPhone SE (1st generation)")
+    static let iPhoneSE2: PreviewDevice = .init(rawValue: "iPhone SE (2nd generation)")
     static let iPhone8: PreviewDevice = .init(rawValue: "iPhone 8")
     static let iPhone8Plus: PreviewDevice = .init(rawValue: "iPhone 8 Plus")
     static let iPhone11: PreviewDevice = .init(rawValue: "iPhone 11")
