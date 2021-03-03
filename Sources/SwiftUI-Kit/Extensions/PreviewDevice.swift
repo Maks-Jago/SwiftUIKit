@@ -32,7 +32,7 @@ public extension PreviewDevice {
 
 // MARK: - Identifiable
 extension PreviewDevice: Identifiable {
-    public var id: UUID { .init() }
+    public var id: String { rawValue }
 }
 
 // MARK: - CaseIterable
