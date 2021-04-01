@@ -12,6 +12,10 @@ public extension Image {
         self.renderingMode(.original)
     }
     
+    var template: Self {
+        self.renderingMode(.template)
+    }
+    
     func aspectFit() -> some View {
         self.resizable().aspectRatio(contentMode: .fit)
     }
