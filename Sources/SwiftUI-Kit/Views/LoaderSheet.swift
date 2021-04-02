@@ -40,6 +40,7 @@ public struct LoaderSheet: ViewModifier {
                     .cornerRadius(20)
                     .shadow(radius: 10)
                     .transition(AnyTransition.scale.animation(.spring()))
+                    .zIndex(100)
                 }
             }
         }
