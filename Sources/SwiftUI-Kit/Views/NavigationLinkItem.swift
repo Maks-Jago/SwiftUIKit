@@ -12,7 +12,7 @@ public struct NavigationLinkItem<I: Identifiable, D: View, L: View>: View {
     public var destination: (I) -> D
     public var label: () -> L
     
-    public init(item: Binding<I?>, @ViewBuilder destination: @escaping (I) -> D, @ViewBuilder label: @escaping () -> L) {
+    init(item: Binding<I?>, @ViewBuilder destination: @escaping (I) -> D, @ViewBuilder label: @escaping () -> L) {
         self.item = item
         self.destination = destination
         self.label = label
@@ -30,14 +30,19 @@ public struct NavigationLinkItem<I: Identifiable, D: View, L: View>: View {
     }
     
     public var body: some View {
+        NavigationLink(
+            destination: destinationView(),
+            isActive: isActive,
+            label: label
+        )
+    }
+    
+    @ViewBuilder
+    private func destinationView() -> some View {
         if let value = item.wrappedValue {
-            NavigationLink(
-                destination: destination(value),
-                isActive: isActive,
-                label: label
-            )
+            destination(value)
         } else {
-            label()
+            EmptyView()
         }
     }
 }
