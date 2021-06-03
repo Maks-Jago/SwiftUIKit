@@ -19,6 +19,6 @@ public extension NavigationLink where Label == EmptyView {
 
 public extension View {
     func navigation<I: Identifiable, D: View>(item: Binding<I?>, @ViewBuilder destination: @escaping (I) -> D) -> some View {
-        NavigationLinkItem(item: item, destination: destination)
+        background(NavigationLinkItem(item: item, destination: destination))
     }
 }
