@@ -8,6 +8,7 @@
 import SwiftUI
 
 public extension View {
+    @available(*, deprecated, message: "Use `alert(status: Binding<AlertBuilder.AlertStatus>)` from SwiftUI-UDF instead of `errorAlert`")
     func errorAlert(
         error: Binding<String?>,
         title: String = Bundle.main.localizedString(forKey: "Error", value: nil, table: nil),
@@ -20,6 +21,8 @@ public extension View {
 }
 
 public extension View {
+    
+    @available(*, deprecated, message: "Use `alert(status: Binding<AlertBuilder.AlertStatus>)` from SwiftUI-UDF instead of `messageAlert`")
     func messageAlert(
         message: Binding<String?>,
         title: String = Bundle.main.localizedString(forKey: "Success", value: nil, table: nil),
