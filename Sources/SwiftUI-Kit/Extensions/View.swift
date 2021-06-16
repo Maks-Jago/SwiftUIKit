@@ -36,6 +36,19 @@ public extension View {
             self
         }
     }
+    
+    @ViewBuilder
+    func `if`<TransformIf: View, TransformElse: View>(
+        _ condition: Bool,
+        transform: (Self) -> TransformIf,
+        else elseTransform: (Self) -> TransformElse
+    ) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            elseTransform(self)
+        }
+    }
 }
 
 public extension View where Self: Equatable {
