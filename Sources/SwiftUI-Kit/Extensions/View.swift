@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+#if canImport(UIKit)
 public extension View {
     func onTapGestureWithAnimation(_ animation: Animation = .easeInOut, perform: @escaping () -> Void) -> some View {
         self.onTapGesture {
@@ -25,7 +26,7 @@ public extension View {
         }
     }
 }
-
+#endif
 
 public extension View {
     @ViewBuilder
