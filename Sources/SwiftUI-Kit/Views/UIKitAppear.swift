@@ -5,6 +5,7 @@
 //  Created by Max Kuznetsov on 01.04.2021.
 //
 
+#if canImport(UIKit)
 import SwiftUI
 
 public extension View {
@@ -36,3 +37,4 @@ final class UIAppearViewController: UIViewController {
         action()
     }
 }
+#endif

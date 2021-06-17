@@ -5,6 +5,7 @@
 //  Created by Max Kuznetsov on 25.10.2020.
 //
 
+#if canImport(UIKit)
 import SwiftUI
 
 public struct PagerView<Page: View>: View {
@@ -137,3 +138,4 @@ private struct PageViewController: UIViewControllerRepresentable {
         }
     }
 }
+#endif

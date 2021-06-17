@@ -5,6 +5,7 @@
 //  Created by Max Kuznetsov on 25.10.2020.
 //
 
+#if canImport(UIKit)
 import SwiftUI
 
 public extension View {
@@ -27,3 +28,4 @@ public struct VisualEffectView: UIViewRepresentable {
     public func makeUIView(context: Context) -> UIVisualEffectView { UIVisualEffectView() }
     public func updateUIView(_ uiView: UIVisualEffectView, context: Context) { uiView.effect = effect }
 }
+#endif

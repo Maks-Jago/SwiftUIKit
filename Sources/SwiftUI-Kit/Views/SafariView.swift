@@ -5,6 +5,7 @@
 //  Created by Max Kuznetsov on 25.10.2020.
 //
 
+#if canImport(UIKit)
 import SafariServices
 import SwiftUI
 
@@ -23,3 +24,4 @@ public struct SafariView: UIViewControllerRepresentable {
     
     public func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {}
 }
+#endif
