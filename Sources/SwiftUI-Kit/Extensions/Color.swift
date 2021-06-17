@@ -5,6 +5,7 @@
 //  Created by Max Kuznetsov on 25.10.2020.
 //
 
+#if canImport(UIKit)
 import SwiftUI
 
 public extension Color {
@@ -55,3 +56,4 @@ public extension Color {
         )
     }
 }
+#endif
