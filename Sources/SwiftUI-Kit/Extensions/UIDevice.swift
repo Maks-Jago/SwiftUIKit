@@ -5,6 +5,7 @@
 //  Created by Max Kuznetsov on 01.04.2021.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public extension UIDevice {
@@ -36,4 +37,4 @@ public extension UIDevice {
         return (UIScreen.main.bounds.size.height == 736)
     }
 }
-
+#endif

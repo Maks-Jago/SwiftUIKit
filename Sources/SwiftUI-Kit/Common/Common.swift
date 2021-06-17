@@ -5,6 +5,7 @@
 //  Created by Max Kuznetsov on 25.10.2020.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public func obtainKeyWindow() -> UIWindow? {
@@ -29,4 +30,4 @@ public func actionWithHideKeyboard(_ action: @escaping () -> Void) -> () -> Void
         hideKeyboard()
     }
 }
-
+#endif
