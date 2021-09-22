@@ -8,12 +8,13 @@
 import SwiftUI
 import PencilKit
 
-struct PencilKitView : UIViewRepresentable {
+@available(iOS 14, *)
+public struct PencilKitView : UIViewRepresentable {
     
     @Binding var canvas: PKCanvasView
     var onChanged: () -> Void = {}
     
-    func makeUIView(context: Context) -> PKCanvasView {
+    public func makeUIView(context: Context) -> PKCanvasView {
         canvas.delegate = context.coordinator
         canvas.overrideUserInterfaceStyle = .light
         canvas.drawingPolicy = .anyInput
@@ -21,14 +22,14 @@ struct PencilKitView : UIViewRepresentable {
         return canvas
     }
     
-    func updateUIView(_ uiView: PKCanvasView, context: Context) { }
+    public func updateUIView(_ uiView: PKCanvasView, context: Context) { }
     
-    func makeCoordinator() -> Coordinator {
+    public func makeCoordinator() -> Coordinator {
         Coordinator(canvas: $canvas, onChanged: onChanged)
     }
 }
 
-class Coordinator: NSObject {
+public class Coordinator: NSObject {
     var canvas: Binding<PKCanvasView>
     let onChanged: () -> Void
 
@@ -39,7 +40,7 @@ class Coordinator: NSObject {
 }
 
 extension Coordinator: PKCanvasViewDelegate {
-    func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+    public func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         onChanged()
     }
 }

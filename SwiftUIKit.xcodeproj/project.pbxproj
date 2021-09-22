@@ -51,6 +51,7 @@
 		8278331326FB65950008252A /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278331226FB65950008252A /* UIFont.swift */; };
 		8278331526FB662A0008252A /* UIFontTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278331426FB662A0008252A /* UIFontTextStyle.swift */; };
 		8278331A26FB77060008252A /* PencilKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278331926FB77060008252A /* PencilKitView.swift */; };
+		8278331C26FB784F0008252A /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278331B26FB784F0008252A /* MailView.swift */; };
 		OBJ_30 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_44 /* SwiftUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftUIKit::SwiftUIKit::Product" /* SwiftUIKit.framework */; };
 /* End PBXBuildFile section */
@@ -103,6 +104,7 @@
 		8278331226FB65950008252A /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		8278331426FB662A0008252A /* UIFontTextStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontTextStyle.swift; sourceTree = "<group>"; };
 		8278331926FB77060008252A /* PencilKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitView.swift; sourceTree = "<group>"; };
+		8278331B26FB784F0008252A /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		OBJ_17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"SwiftUIKit::SwiftUIKit::Product" /* SwiftUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -182,6 +184,7 @@
 				50831F2B2545EABF00DC7EF6 /* VideoPlayer.swift */,
 				50831F3C2545EFD700DC7EF6 /* SafariView.swift */,
 				8278331926FB77060008252A /* PencilKitView.swift */,
+				8278331B26FB784F0008252A /* MailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				50831EC62545E00E00DC7EF6 /* PreviewDevice.swift in Sources */,
 				50831EEC2545E16600DC7EF6 /* Alerts.swift in Sources */,
 				50831EF22545E21400DC7EF6 /* String.swift in Sources */,
+				8278331C26FB784F0008252A /* MailView.swift in Sources */,
 				50831E8A2545D35900DC7EF6 /* RoundedCorner.swift in Sources */,
 				50831E542545CCB000DC7EF6 /* Common.swift in Sources */,
 				50831E802545D2B700DC7EF6 /* IfLetViewPlaceholder.swift in Sources */,
