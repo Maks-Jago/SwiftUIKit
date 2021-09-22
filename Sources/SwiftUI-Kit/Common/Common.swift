@@ -30,39 +30,4 @@ public func actionWithHideKeyboard(_ action: @escaping () -> Void) -> () -> Void
         hideKeyboard()
     }
 }
-
-func rootController() -> UIViewController? {
-    return visibleViewController(window: obtainKeyWindow())
-}
-
-func visibleViewController(window: UIWindow?) -> UIViewController? {
-    guard let window = window else {
-        return nil
-    }
-    let winRoot = window.rootViewController
-    var visibleController = winRoot
-    func visibleViewController(fromNavController controller: UINavigationController) {
-        visibleController = controller.visibleViewController
-        if visibleController?.presentedViewController != nil {
-            visibleController = visibleController?.presentedViewController
-        }
-    }
-    if let navController = winRoot as? UINavigationController {
-        visibleViewController(fromNavController: navController)
-    } else if let tabBarContoller = winRoot as? UITabBarController {
-        if let navController = tabBarContoller.selectedViewController as? UINavigationController {
-            visibleViewController(fromNavController: navController)
-        } else {
-            visibleController = tabBarContoller.selectedViewController
-        }
-    }
-    return _visibleViewController(vc: visibleController)
-}
-
-private func _visibleViewController(vc: UIViewController?) -> UIViewController? {
-    if let presentedViewController = vc?.presentedViewController {
-        return _visibleViewController(vc: presentedViewController)
-    }
-    return vc
-}
 #endif
