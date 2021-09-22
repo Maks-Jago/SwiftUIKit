@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension DispatchQueue {
+public extension DispatchQueue {
     func asyncWithAnimation(_ animation: Animation = .default, _ block: @escaping () -> Void) {
         self.async {
             withAnimation(animation) {
