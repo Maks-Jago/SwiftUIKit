@@ -199,12 +199,12 @@
 		OBJ_7 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_8 /* SwiftUIKit */,
+				OBJ_8 /* SwiftUI-Kit */,
 			);
 			name = Sources;
 			sourceTree = SOURCE_ROOT;
 		};
-		OBJ_8 /* SwiftUIKit */ = {
+		OBJ_8 /* SwiftUI-Kit */ = {
 			isa = PBXGroup;
 			children = (
 				50831E4E2545CC1E00DC7EF6 /* Common */,
@@ -212,8 +212,8 @@
 				50831E732545D15F00DC7EF6 /* ViewModifiers */,
 				50831E7E2545D29F00DC7EF6 /* Views */,
 			);
-			name = SwiftUIKit;
-			path = Sources/SwiftUIKit;
+			name = "SwiftUI-Kit";
+			path = "Sources/SwiftUI-Kit";
 			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
