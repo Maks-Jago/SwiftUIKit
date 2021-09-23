@@ -23,6 +23,14 @@ public struct MailView: UIViewControllerRepresentable {
         self.subject = subject
         self.body = body
     }
+    
+    public init(presentation: Binding<PresentationMode>, result: Result<Void, Error>?, recepients: [String]? = nil, subject: String = "", body: String = "") {
+        self.presentation = presentation
+        self.result = result
+        self.recepients = recepients
+        self.subject = subject
+        self.body = body
+    }
 
     public class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
         
