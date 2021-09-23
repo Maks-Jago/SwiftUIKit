@@ -10,15 +10,15 @@ import MessageUI
 
 public struct MailView: UIViewControllerRepresentable {
     
-    @Environment(\.presentationMode) var presentation
+    @Environment(\.presentationMode) private var presentation
     @Binding var result: Result<Void, Error>?
     
     var recepients: [String]?
     var subject: String
     var body: String
     
-    public init(result: Result<Void, Error>?, recepients: [String]? = nil, subject: String = "", body: String = "") {
-        self.result = result
+    public init(result: Binding<Result<Void, Error>?>, recepients: [String]? = nil, subject: String = "", body: String = "") {
+        self._result = result
         self.recepients = recepients
         self.subject = subject
         self.body = body
