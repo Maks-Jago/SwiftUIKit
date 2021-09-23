@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 14, *)
-extension UIFont.TextStyle {
+public extension UIFont.TextStyle {
     init?(_ textStyle: Font.TextStyle) {
         let styles: [Font.TextStyle: UIFont.TextStyle] = [
             .largeTitle: .largeTitle,
