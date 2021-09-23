@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Text {
+public extension Text {
     init(_ astring: NSAttributedString) {
         self.init("")
         
