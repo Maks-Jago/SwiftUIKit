@@ -18,7 +18,7 @@ public struct MailView: UIViewControllerRepresentable {
     var body: String
     
     public init(result: Binding<Result<Void, Error>?>, recepients: [String]? = nil, subject: String = "", body: String = "") {
-        self.result = result
+        self._result = result
         self.recepients = recepients
         self.subject = subject
         self.body = body

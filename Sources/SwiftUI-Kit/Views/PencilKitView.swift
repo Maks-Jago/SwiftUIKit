@@ -14,8 +14,8 @@ public struct PencilKitView : UIViewRepresentable {
     @Binding var canvas: PKCanvasView
     var onChanged: () -> Void
     
-    public init(canvas: PKCanvasView, onChanged: () -> Void = {}) {
-        self.canvas = canvas
+    public init(canvas: Binding<PKCanvasView>, onChanged: @escaping () -> Void = {}) {
+        self._canvas = canvas
         self.onChanged = onChanged
     }
     
