@@ -12,7 +12,7 @@ extension String: Identifiable {
     public var id: String { self }
 }
 
-extension String {
+public extension String {
    func widthOfString(usingFont font: UIFont) -> CGFloat {
         let fontAttributes = [NSAttributedString.Key.font: font]
         let size = self.size(withAttributes: fontAttributes)
@@ -20,7 +20,7 @@ extension String {
     }
 }
 
-extension StringProtocol {
+public extension StringProtocol {
     func index<S: StringProtocol>(of string: S, options: String.CompareOptions = []) -> Index? {
         range(of: string, options: options)?.lowerBound
     }
