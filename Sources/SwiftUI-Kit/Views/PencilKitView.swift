@@ -12,7 +12,12 @@ import PencilKit
 public struct PencilKitView : UIViewRepresentable {
     
     @Binding var canvas: PKCanvasView
-    var onChanged: () -> Void = {}
+    var onChanged: () -> Void
+    
+    public init(canvas: Binding<PKCanvasView>, onChanged: @escaping () -> Void = {}) {
+        self._canvas = canvas
+        self.onChanged = onChanged
+    }
     
     public func makeUIView(context: Context) -> PKCanvasView {
         canvas.delegate = context.coordinator
