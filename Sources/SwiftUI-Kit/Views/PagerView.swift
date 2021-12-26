@@ -30,6 +30,7 @@ public struct PagerView<Page: View>: View {
             TabView(selection: $pageSelection) {
                 ForEach(0..<pages.count) { index in
                     pages[index]
+                        .tag(index)
                 }
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: dispayPagesIndicator ? .always : .never))
