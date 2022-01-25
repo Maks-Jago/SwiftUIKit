@@ -11,6 +11,7 @@ public struct NavigationLinkItem<I: Identifiable, D: View, L: View>: View {
     public var item: Binding<I?>
     public var destination: (I) -> D
     public var label: () -> L
+    public var isDetailLink: Bool = true
     
     init(item: Binding<I?>, @ViewBuilder destination: @escaping (I) -> D, @ViewBuilder label: @escaping () -> L) {
         self.item = item
@@ -35,6 +36,13 @@ public struct NavigationLinkItem<I: Identifiable, D: View, L: View>: View {
             isActive: isActive,
             label: label
         )
+        .isDetailLink(isDetailLink)
+    }
+
+    public func isDetailLink(_ isDetailLink: Bool) -> Self {
+        var mutableSelf = self
+        mutableSelf.isDetailLink = isDetailLink
+        return mutableSelf
     }
     
     @ViewBuilder
