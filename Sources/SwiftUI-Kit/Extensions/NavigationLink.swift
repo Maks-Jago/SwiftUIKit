@@ -16,9 +16,3 @@ public extension NavigationLink where Label == EmptyView {
         self.init(destination: destination(), isActive: isActive) { EmptyView() }
     }
 }
-
-public extension View {
-    func navigation<I: Identifiable, D: View>(item: Binding<I?>, @ViewBuilder destination: @escaping (I) -> D) -> some View {
-        background(NavigationLinkItem(item: item, destination: destination))
-    }
-}
