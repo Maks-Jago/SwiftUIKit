@@ -6,6 +6,16 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import UIKit
+typealias LocalColor = UIColor
+typealias LocalFont = UIFont
+
+#else
+import AppKit
+typealias LocalColor = NSColor
+typealias LocalFont = NSFont
+#endif
 
 public extension Text {
     init(_ astring: NSAttributedString) {
@@ -15,11 +25,11 @@ public extension Text {
             
             var t = Text(astring.attributedSubstring(from: range).string)
 
-            if let color = attrs[NSAttributedString.Key.foregroundColor] as? UIColor {
+            if let color = attrs[NSAttributedString.Key.foregroundColor] as? LocalColor {
                 t  = t.foregroundColor(Color(color))
             }
 
-            if let font = attrs[NSAttributedString.Key.font] as? UIFont {
+            if let font = attrs[NSAttributedString.Key.font] as? LocalFont {
                 t  = t.font(.init(font))
             }
 
@@ -28,7 +38,7 @@ public extension Text {
             }
             
             if let striked = attrs[NSAttributedString.Key.strikethroughStyle] as? NSNumber, striked != 0 {
-                if let strikeColor = (attrs[NSAttributedString.Key.strikethroughColor] as? UIColor) {
+                if let strikeColor = (attrs[NSAttributedString.Key.strikethroughColor] as? LocalColor) {
                     t = t.strikethrough(true, color: Color(strikeColor))
                 } else {
                     t = t.strikethrough(true)
@@ -40,7 +50,7 @@ public extension Text {
             }
             
             if let underline = attrs[NSAttributedString.Key.underlineStyle] as? NSNumber, underline != 0 {
-                if let underlineColor = (attrs[NSAttributedString.Key.underlineColor] as? UIColor) {
+                if let underlineColor = (attrs[NSAttributedString.Key.underlineColor] as? LocalColor) {
                     t = t.underline(true, color: Color(underlineColor))
                 } else {
                     t = t.underline(true)

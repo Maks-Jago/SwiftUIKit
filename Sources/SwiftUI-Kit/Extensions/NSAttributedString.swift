@@ -6,6 +6,94 @@
 //
 
 import SwiftUI
+#if os(iOS)
+import UIKit
+public extension NSAttributedString {
+    func setFont(for text: String, font: UIFont) -> NSAttributedString {
+        let ranges = self.string.ranges(of: text)
+        
+        guard !ranges.isEmpty else {
+            return self
+        }
+        let nsRanges = ranges.map { NSRange($0, in: self.string) }
+        
+        let newStr = self.mutableCopy() as! NSMutableAttributedString
+        newStr.beginEditing()
+        for nsRange in nsRanges {
+            newStr.addAttribute(.font, value: font, range: nsRange)
+        }
+        newStr.endEditing()
+        return newStr
+    }
+    
+    func setFont(for words: [String], font: UIFont) -> NSAttributedString {
+        let newStr = self.mutableCopy() as! NSMutableAttributedString
+        newStr.beginEditing()
+        
+        for word in words {
+            let ranges = self.string.ranges(of: word)
+            
+            guard !ranges.isEmpty else {
+                continue
+            }
+            
+            let nsRanges = ranges.map { NSRange($0, in: self.string) }
+            
+            for nsRange in nsRanges {
+                newStr.addAttribute(.font, value: font, range: nsRange)
+            }
+        }
+        newStr.endEditing()
+        
+        return newStr
+    }
+}
+
+#else
+import AppKit
+
+public extension NSAttributedString {
+    func setFont(for text: String, font: NSFont) -> NSAttributedString {
+        let ranges = self.string.ranges(of: text)
+        
+        guard !ranges.isEmpty else {
+            return self
+        }
+        let nsRanges = ranges.map { NSRange($0, in: self.string) }
+        
+        let newStr = self.mutableCopy() as! NSMutableAttributedString
+        newStr.beginEditing()
+        for nsRange in nsRanges {
+            newStr.addAttribute(.font, value: font, range: nsRange)
+        }
+        newStr.endEditing()
+        return newStr
+    }
+    
+    func setFont(for words: [String], font: NSFont) -> NSAttributedString {
+        let newStr = self.mutableCopy() as! NSMutableAttributedString
+        newStr.beginEditing()
+        
+        for word in words {
+            let ranges = self.string.ranges(of: word)
+            
+            guard !ranges.isEmpty else {
+                continue
+            }
+            
+            let nsRanges = ranges.map { NSRange($0, in: self.string) }
+            
+            for nsRange in nsRanges {
+                newStr.addAttribute(.font, value: font, range: nsRange)
+            }
+        }
+        newStr.endEditing()
+        
+        return newStr
+    }
+}
+
+#endif
 
 //MARK: - Attributed String By Trimming CharacterSet
 public extension NSAttributedString {
@@ -81,6 +169,12 @@ public extension NSAttributedString {
     }
 }
 
+
+//MARK: - Set Font
+
+#if os(iOS)
+import UIKit
+
 //MARK: - Set Color
 public extension NSAttributedString {
     func setColor(for text: String, color: UIColor) -> NSAttributedString {
@@ -101,9 +195,12 @@ public extension NSAttributedString {
     }
 }
 
-//MARK: - Set Font
+#else
+import AppKit
+
+//MARK: - Set Color
 public extension NSAttributedString {
-    func setFont(for text: String, font: UIFont) -> NSAttributedString {
+    func setColor(for text: String, color: NSColor) -> NSAttributedString {
         let ranges = self.string.ranges(of: text)
         
         guard !ranges.isEmpty else {
@@ -114,31 +211,11 @@ public extension NSAttributedString {
         let newStr = self.mutableCopy() as! NSMutableAttributedString
         newStr.beginEditing()
         for nsRange in nsRanges {
-            newStr.addAttribute(.font, value: font, range: nsRange)
+            newStr.addAttribute(.foregroundColor, value: color, range: nsRange)
         }
         newStr.endEditing()
-        return newStr
-    }
-    
-    func setFont(for words: [String], font: UIFont) -> NSAttributedString {
-        let newStr = self.mutableCopy() as! NSMutableAttributedString
-        newStr.beginEditing()
-        
-        for word in words {
-            let ranges = self.string.ranges(of: word)
-            
-            guard !ranges.isEmpty else {
-                continue
-            }
-            
-            let nsRanges = ranges.map { NSRange($0, in: self.string) }
-            
-            for nsRange in nsRanges {
-                newStr.addAttribute(.font, value: font, range: nsRange)
-            }
-        }
-        newStr.endEditing()
-        
         return newStr
     }
 }
+
+#endif

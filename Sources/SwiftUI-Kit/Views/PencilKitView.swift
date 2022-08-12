@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PencilKit
+#if os(iOS)
 
 @available(iOS 14, *)
 public struct PencilKitView : UIViewRepresentable {
@@ -49,3 +50,4 @@ extension Coordinator: PKCanvasViewDelegate {
         onChanged()
     }
 }
+#endif

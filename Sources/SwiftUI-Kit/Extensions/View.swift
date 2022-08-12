@@ -80,6 +80,7 @@ public extension View where Self: Equatable {
         EquatableView(content: self)
     }
 }
+#if os(iOS)
 
 //MARK: - Hide Navigation Bar
 public extension View {
@@ -142,6 +143,8 @@ private struct KeyboardPaddingModifier: ViewModifier {
     }
 }
 
+#endif
+
 //MARK: - Clickable Clear Background
 public extension View {
     func clickableClearBackground() -> some View {
@@ -163,3 +166,4 @@ public extension View {
         }
     }
 }
+

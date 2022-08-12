@@ -12,6 +12,9 @@ extension String: Identifiable {
     public var id: String { self }
 }
 
+#if os(iOS)
+import UIKit
+
 public extension String {
    func widthOfString(usingFont font: UIFont) -> CGFloat {
         let fontAttributes = [NSAttributedString.Key.font: font]
@@ -19,6 +22,18 @@ public extension String {
         return size.width
     }
 }
+#else
+import AppKit
+
+public extension String {
+   func widthOfString(usingFont font: NSFont) -> CGFloat {
+        let fontAttributes = [NSAttributedString.Key.font: font]
+        let size = self.size(withAttributes: fontAttributes)
+        return size.width
+    }
+}#endif
+
+
 
 public extension StringProtocol {
     func index<S: StringProtocol>(of string: S, options: String.CompareOptions = []) -> Index? {

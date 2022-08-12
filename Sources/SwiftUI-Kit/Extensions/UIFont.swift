@@ -5,6 +5,7 @@
 //  Created by  Vladyslav Fil on 22.09.2021.
 //
 
+#if canImport(UIKit)
 import UIKit
 
 public extension UIFont {
@@ -20,3 +21,4 @@ public extension UIFont {
         return max(CGFloat(ceilf(Float(boundingBox.height))), lineHeight)
     }
 }
+#endif
