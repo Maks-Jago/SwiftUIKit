@@ -5,8 +5,8 @@
 //  Created by  Vladyslav Fil on 22.09.2021.
 //
 
+#if os(iOS)
 import SwiftUI
-
 @available(iOS 14, *)
 public extension UIFont.TextStyle {
     init?(_ textStyle: Font.TextStyle) {
@@ -31,3 +31,4 @@ public extension UIFont.TextStyle {
         self = style
     }
 }
+#endif

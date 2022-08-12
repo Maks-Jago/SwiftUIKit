@@ -5,6 +5,7 @@
 //  Created by  Vladyslav Fil on 22.09.2021.
 //
 
+#if canImport(UIKit)
 import SwiftUI
 import MessageUI
 
@@ -67,3 +68,4 @@ public struct MailView: UIViewControllerRepresentable {
     public func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
 }
 
+#endif

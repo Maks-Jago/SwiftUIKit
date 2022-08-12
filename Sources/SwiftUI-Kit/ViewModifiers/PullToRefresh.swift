@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Combine
 
-@available(iOS 15, *)
+@available(iOS 15, macOS 12.0, *)
 fileprivate struct PullToRefreshModifier: ViewModifier {
     @Binding var isRefreshing: Bool
     @StateObject var handler = ContinuationHandler()
@@ -40,7 +40,7 @@ public extension View {
 
     @ViewBuilder
     func pullToRefresh(isRefreshing: Binding<Bool>) -> some View {
-        if #available(iOS 15, *) {
+        if #available(iOS 15,macOS 12.0, *) {
             self.modifier(PullToRefreshModifier(isRefreshing: isRefreshing))
         } else {
             self
