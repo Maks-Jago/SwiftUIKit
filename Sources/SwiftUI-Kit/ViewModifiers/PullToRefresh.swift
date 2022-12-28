@@ -18,7 +18,9 @@ fileprivate struct PullToRefreshModifier: ViewModifier {
         content.refreshable {
             await withUnsafeContinuation { (continuation: UnsafeContinuation<Void, Never>) in
                 handler.continuation = continuation
-                isRefreshing = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    isRefreshing = true
+                }
             }
         }
         .onChange(of: isRefreshing) { [handler] newValue in
