@@ -28,7 +28,7 @@ public extension View {
         AnyView(self)
     }
     
-    func embedInNavigationLink<T: View>(link: T?) -> some View {
+    func embedInNavigationLink<T: View>(link: @escaping () -> T?) -> some View {
         IfLetViewPlaceholder(value: link, content: {
             NavigationLink(destination: $0) {
                 self
