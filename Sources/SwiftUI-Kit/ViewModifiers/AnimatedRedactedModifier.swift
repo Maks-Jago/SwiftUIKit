@@ -9,8 +9,8 @@ import SwiftUI
 
 public struct AnimatedRedactedModifier: ViewModifier {
     public var isActive: Bool
-    public var backgroundColor: Color = .gray
-    public var overlayGradient: LinearGradient = .init(colors: [.clear, .gray, .clear], startPoint: .leading, endPoint: .trailing)
+    public var backgroundColor: Color
+    public var overlayGradient: LinearGradient
     
     @State private var animated: Bool
     
