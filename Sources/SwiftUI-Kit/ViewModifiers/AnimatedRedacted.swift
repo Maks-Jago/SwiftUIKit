@@ -1,5 +1,5 @@
 //
-//  AnimatedRedactedModifier.swift
+//  AnimatedRedacted.swift
 //  
 //
 //  Created by Alexander Sharko on 13.02.2023.
