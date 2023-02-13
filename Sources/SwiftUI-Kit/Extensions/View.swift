@@ -168,7 +168,7 @@ public extension View {
 }
 
 //MARK: - Fixed size
-extension View {
+public extension View {
     func fixedWidth() -> some View {
         fixedSize(horizontal: true, vertical: false)
     }
@@ -179,7 +179,7 @@ extension View {
 }
 
 //MARK: - Frame
-extension View {
+public extension View {
     func frame(_ widthAndHeight: CGFloat, alignment: Alignment = .center) -> some View {
         frame(width: widthAndHeight, height: widthAndHeight, alignment: alignment)
     }
