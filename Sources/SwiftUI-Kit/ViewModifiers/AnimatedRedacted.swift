@@ -35,9 +35,8 @@ public struct AnimatedRedactedModifier: ViewModifier {
                             let width = geometry.size.width
                             let height = geometry.size.height
                             let offset = geometry.size.width * 2.5
-                            let minSide = min(width, height)
                             let diagonal = sqrt(pow(width, 2) + pow(height, 2))
-                            let scale = max((minSide / diagonal), (diagonal / minSide))
+                            let scale = diagonal / min(width, height)
                             overlayGradient
                                 .offset(x: animated ? offset : -offset)
                                 .rotationEffect(.init(degrees: -45))
