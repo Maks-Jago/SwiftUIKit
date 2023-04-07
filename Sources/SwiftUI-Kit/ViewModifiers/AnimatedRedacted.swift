@@ -27,29 +27,30 @@ public struct AnimatedRedactedModifier: ViewModifier {
     
     public func body(content: Content) -> some View {
         content
-        .if(isActive) {
-            $0.overlay(
-                ZStack {
-                    backgroundColor
-                    GeometryReader { geometry in
-                        let width = geometry.size.width
-                        let height = geometry.size.height
-                        let offset = geometry.size.width * 2.5
-                        let scale = max((width / height), (height / width))
-                        overlayGradient
-                            .offset(x: animated ? offset : -offset)
-                            .scaleEffect(scale)
-                            .rotationEffect(.init(degrees: -45))
-                            .animation(
-                                .linear(duration: 1.5).repeatForever(autoreverses: false),
-                                value: animated
-                            )
-                            .onAppear { animated = true }
+            .if(isActive) {
+                $0.overlay(
+                    ZStack {
+                        backgroundColor
+                        GeometryReader { geometry in
+                            let width = geometry.size.width
+                            let height = geometry.size.height
+                            let offset = width * 2.5
+                            let diagonal = sqrt(pow(width, 2) + pow(height, 2))
+                            let scale = diagonal / min(width, height)
+                            overlayGradient
+                                .offset(x: animated ? offset : -offset)
+                                .rotationEffect(.init(degrees: -45))
+                                .scaleEffect(scale, anchor: .center)
+                                .animation(
+                                    .linear(duration: 1.5).repeatForever(autoreverses: false),
+                                    value: animated
+                                )
+                                .onAppear { animated = true }
+                        }
                     }
-                }
-                .mask(Rectangle())
-            )
-        }
+                    .mask(Rectangle())
+                )
+            }
     }
 }
 
