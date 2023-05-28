@@ -1,16 +1,14 @@
-//
-//  UIApplication.swift
-//  SwiftUIKit
-//
-//  Created by Max Kuznetsov on 25.10.2020.
-//
 
 #if canImport(UIKit)
 import UIKit
 
 public extension UIApplication {
-    var currentKeyWindow: UIWindow? {
-        windows.first { $0.isKeyWindow }
+    var activeWindow: UIWindow? {
+        connectedScenes
+            .filter { $0.activationState == .foregroundActive }
+            .first(where: { $0 is UIWindowScene })
+            .flatMap({ $0 as? UIWindowScene })?.windows
+            .first(where: \.isKeyWindow)
     }
     
     func endEditing() {
