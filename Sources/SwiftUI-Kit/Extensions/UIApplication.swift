@@ -4,8 +4,14 @@ import UIKit
 
 public extension UIApplication {
     var activeWindow: UIWindow? {
-        connectedScenes
+        var scenes = connectedScenes
             .filter { $0.activationState == .foregroundActive }
+
+        if scenes.isEmpty {
+            scenes = connectedScenes
+        }
+
+        return scenes
             .first(where: { $0 is UIWindowScene })
             .flatMap({ $0 as? UIWindowScene })?.windows
             .first(where: \.isKeyWindow)
