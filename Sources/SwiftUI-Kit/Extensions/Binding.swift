@@ -33,10 +33,6 @@ public extension Binding where Value == PresentationMode {
 }
 
 public extension Binding {
-    init(value: Value, action: @escaping () -> Void) {
-        self.init(get: { value }, set: { _ in action()} )
-    }
-    
     init(get: @escaping () -> Value, action: @escaping () -> Void) {
         self.init(get: get, set: { _ in action() })
     }
@@ -48,8 +44,23 @@ public extension Binding {
     init(readOnly get: @escaping () -> Value) {
         self.init(get: get, set: { _ in })
     }
-    
-    init(value: Value) {
-        self.init(get: { value }, set: { _ in })
+}
+
+
+public extension Binding {
+    func isPresented<T>() -> Binding<Bool> where Value == Optional<T> {
+        Binding<Bool>(
+            get: {
+                switch self.wrappedValue {
+                case .some: return true
+                case .none: return false
+                }
+            },
+            set: {
+                if !$0 {
+                    self.wrappedValue = nil
+                }
+            }
+        )
     }
 }
