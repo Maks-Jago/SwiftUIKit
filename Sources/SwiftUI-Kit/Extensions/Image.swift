@@ -24,3 +24,13 @@ public extension Image {
         self.resizable().aspectRatio(contentMode: .fill)
     }
 }
+
+public extension Image {
+    init(if condition: Bool, image: Self, else elseImage: Self) {
+        if condition {
+            self = image
+        } else {
+            self = elseImage
+        }
+    }
+}
