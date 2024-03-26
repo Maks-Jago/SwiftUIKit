@@ -163,7 +163,6 @@
 				8278331226FB65950008252A /* UIFont.swift */,
 				8278331426FB662A0008252A /* UIFontTextStyle.swift */,
 				8278330826FB4ED80008252A /* NSAttributedString.swift */,
-				BCEE50C22BB2CD43004FB6D1 /* ButtonStyle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -190,6 +189,7 @@
 		50831E7E2545D29F00DC7EF6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BCEE50C22BB2CD43004FB6D1 /* ButtonStyle.swift */,
 				50831E8F2545D3C000DC7EF6 /* ActivityIndicator.swift */,
 				50831EE12545E0FE00DC7EF6 /* IfLetView.swift */,
 				50831E7F2545D2B700DC7EF6 /* IfLetViewPlaceholder.swift */,
