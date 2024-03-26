@@ -188,3 +188,50 @@ public extension View {
         frame(width: size.width, height: size.height, alignment: alignment)
     }
 }
+
+// MARK: - Read Initial
+extension View {
+    func readInitial(_ size: Binding<CGSize>) -> some View {
+        background(
+            GeometryReader { geometry in
+                Color.white.opacity(0.000001)
+                    .onAppear { size.wrappedValue = geometry.size }
+            }
+        )
+    }
+}
+
+// MARK: - ZeroListEdgeRowInsets
+extension View {
+    func zeroListEdgeRowInsets() -> some View {
+        self.listRowInsets(.zero)
+    }
+}
+
+// MARK: - Read position
+extension View {
+    @available(iOS 15.0, *)
+    func read(_ position: Binding<CGPoint>, in coordinateSpace: CoordinateSpace) -> some View {
+        background {
+            GeometryReader { geometry in
+                Color.white.opacity(0.000001)
+                    .preference(key: RectPreferenceKey.self, value: geometry.frame(in: coordinateSpace))
+                    .onPreferenceChange(RectPreferenceKey.self) { frame in
+                        withAnimation {
+                            position.wrappedValue = .init(x: frame.midX, y: frame.midY)
+                        }
+                    }
+            }
+        }
+    }
+}
+
+struct RectPreferenceKey: PreferenceKey {
+    static var defaultValue: CGRect = .zero
+
+    static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = nextValue()
+    }
+}
+
+
