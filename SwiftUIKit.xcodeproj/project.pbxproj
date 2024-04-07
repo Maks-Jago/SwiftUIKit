@@ -57,6 +57,8 @@
 		8278331A26FB77060008252A /* PencilKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278331926FB77060008252A /* PencilKitView.swift */; };
 		8278331C26FB784F0008252A /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278331B26FB784F0008252A /* MailView.swift */; };
 		8278334C26FCCD630008252A /* Text+NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278334B26FCCD630008252A /* Text+NSAttributedString.swift */; };
+		BC92E4EC2BC2F6B100CFD7F5 /* SignInWithAppleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC92E4EB2BC2F6B100CFD7F5 /* SignInWithAppleButton.swift */; };
+		BC92E4EF2BC2F76200CFD7F5 /* SocialAuthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC92E4EE2BC2F76200CFD7F5 /* SocialAuthData.swift */; };
 		BCEE50C32BB2CD43004FB6D1 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCEE50C22BB2CD43004FB6D1 /* ButtonStyle.swift */; };
 		OBJ_30 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_44 /* SwiftUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftUIKit::SwiftUIKit::Product" /* SwiftUIKit.framework */; };
@@ -116,6 +118,8 @@
 		8278331926FB77060008252A /* PencilKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitView.swift; sourceTree = "<group>"; };
 		8278331B26FB784F0008252A /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		8278334B26FCCD630008252A /* Text+NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text+NSAttributedString.swift"; sourceTree = "<group>"; };
+		BC92E4EB2BC2F6B100CFD7F5 /* SignInWithAppleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButton.swift; sourceTree = "<group>"; };
+		BC92E4EE2BC2F76200CFD7F5 /* SocialAuthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAuthData.swift; sourceTree = "<group>"; };
 		BCEE50C22BB2CD43004FB6D1 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		OBJ_17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 		50831E7E2545D29F00DC7EF6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BC92E4ED2BC2F74700CFD7F5 /* AlternativeSignIn */,
 				BCEE50C22BB2CD43004FB6D1 /* ButtonStyle.swift */,
 				50831E8F2545D3C000DC7EF6 /* ActivityIndicator.swift */,
 				50831EE12545E0FE00DC7EF6 /* IfLetView.swift */,
@@ -205,6 +210,15 @@
 				8278331B26FB784F0008252A /* MailView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BC92E4ED2BC2F74700CFD7F5 /* AlternativeSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				BC92E4EB2BC2F6B100CFD7F5 /* SignInWithAppleButton.swift */,
+				BC92E4EE2BC2F76200CFD7F5 /* SocialAuthData.swift */,
+			);
+			path = AlternativeSignIn;
 			sourceTree = "<group>";
 		};
 		OBJ_14 /* Products */ = {
@@ -335,6 +349,7 @@
 				8278330D26FB51340008252A /* EdgeInsets.swift in Sources */,
 				50831EF22545E21400DC7EF6 /* String.swift in Sources */,
 				8278331C26FB784F0008252A /* MailView.swift in Sources */,
+				BC92E4EF2BC2F76200CFD7F5 /* SocialAuthData.swift in Sources */,
 				50831E8A2545D35900DC7EF6 /* RoundedCorner.swift in Sources */,
 				50831E542545CCB000DC7EF6 /* Common.swift in Sources */,
 				50831E802545D2B700DC7EF6 /* IfLetViewPlaceholder.swift in Sources */,
@@ -364,6 +379,7 @@
 				BCEE50C32BB2CD43004FB6D1 /* ButtonStyle.swift in Sources */,
 				8278331326FB65950008252A /* UIFont.swift in Sources */,
 				50831EF82545E46100DC7EF6 /* NavigationControllerConfigurator.swift in Sources */,
+				BC92E4EC2BC2F6B100CFD7F5 /* SignInWithAppleButton.swift in Sources */,
 				50831F0C2545E94300DC7EF6 /* VisualEffectView.swift in Sources */,
 				8278331526FB662A0008252A /* UIFontTextStyle.swift in Sources */,
 				50831E602545CEF400DC7EF6 /* Binding.swift in Sources */,
