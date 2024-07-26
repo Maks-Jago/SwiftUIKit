@@ -73,6 +73,16 @@ public extension View {
             elseTransform(self)
         }
     }
+    
+    @ViewBuilder
+    func `ifLet`<T, Transform: View>(_ optional: T?, transform: (Self, T) -> Transform) -> some View {
+        if let unwrapped = optional {
+            transform(self, unwrapped)
+        } else {
+            self
+        }
+    }
+
 }
 
 public extension View where Self: Equatable {
