@@ -39,6 +39,7 @@ public extension View {
     }
     
     @available(iOS 16.0, *)
+    @available(macOS 13.0, *)
     func embedInNavigationLink<P: Hashable>(value: P?) -> some View {
         NavigationLink(value: value, label: { self })
     }
@@ -48,11 +49,13 @@ public extension View {
     }
     
     @available(iOS 16.0, *)
+    @available(macOS 13.0, *)
     func embedInNavigationStack() -> some View {
         NavigationStack { self }
     }
     
     @available(iOS 16.0, *)
+    @available(macOS 13.0, *)
     func embedInNavigationStack<Data>(with path: Binding<Data>) -> some View where Data : MutableCollection, Data : RandomAccessCollection, Data : RangeReplaceableCollection, Data.Element : Hashable {
         NavigationStack(path: path) { self }
     }
