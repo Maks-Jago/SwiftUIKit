@@ -9,24 +9,25 @@ import SwiftUI
 
 public extension Binding {
     /// Wrapper to listen to didSet of Binding
-     func didSet(_ didSet: @escaping ((newValue: Value, oldValue: Value)) -> Void) -> Binding<Value> {
+     func didSet(_ didSet: @escaping (_ newValue: Value, _ oldValue: Value) -> Void) -> Binding<Value> {
         Binding(
             get: { self.wrappedValue },
             set: { newValue in
                 let oldValue = self.wrappedValue
                 self.wrappedValue = newValue
-                didSet((newValue, oldValue))
+                didSet(newValue, oldValue)
             }
         )
     }
     
     /// Wrapper to listen to willSet of Binding
-    func willSet(_ willSet: @escaping ((newValue: Value, oldValue: Value)) -> Void) -> Binding<Value> {
+    func willSet(_ willSet: @escaping (_ newValue: inout Value, _ oldValue: Value) -> Void) -> Binding<Value> {
         Binding(
             get: { self.wrappedValue },
             set: { newValue in
-                willSet((newValue, self.wrappedValue))
-                self.wrappedValue = newValue
+                var mutableNewValue = newValue
+                willSet(&mutableNewValue, self.wrappedValue)
+                self.wrappedValue = mutableNewValue
             }
         )
     }
