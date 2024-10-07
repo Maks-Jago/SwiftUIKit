@@ -1,14 +1,23 @@
+//===--- UIFontTextStyle+Extensions.swift ------------------------===//
 //
-//  UIFontTextStyle.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUI-Kit open source project
 //
-//  Created by  Vladyslav Fil on 22.09.2021.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if os(iOS)
 import SwiftUI
+
 @available(iOS 14, *)
 public extension UIFont.TextStyle {
+    
+    /// Initializes a `UIFont.TextStyle` from a corresponding SwiftUI `Font.TextStyle`.
+    /// - Parameter textStyle: The `Font.TextStyle` to convert.
+    /// - Returns: A `UIFont.TextStyle` if the conversion is successful; otherwise, returns `nil`.
     init?(_ textStyle: Font.TextStyle) {
         let styles: [Font.TextStyle: UIFont.TextStyle] = [
             .largeTitle: .largeTitle,
