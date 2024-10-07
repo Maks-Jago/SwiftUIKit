@@ -1,6 +1,6 @@
 # SwiftUIKit
 
-SwiftUI-Kit is a collection of useful extensions and utilities for SwiftUI. This library enhances SwiftUI development by providing a variety of view modifiers, UIKit wrappers, and additional functionalities. It includes components for handling UI appearance, user interactions, and more.
+SwiftUIKit is a collection of useful extensions and utilities for SwiftUI. This library enhances SwiftUI development by providing a variety of view modifiers, UIKit wrappers, and additional functionalities. It includes components for handling UI appearance, user interactions, and more.
 
 ## Table of Contents
 
@@ -16,22 +16,22 @@ SwiftUI-Kit is a collection of useful extensions and utilities for SwiftUI. This
 
 ## Installation
 
-To use `SwiftUI-Kit` in your project, copy the source files directly into your project.
+To use `SwiftUIKit` in your project, copy the source files directly into your project.
 
 Alternatively, if you use Swift Package Manager, add the library as a dependency to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/YourUsername/SwiftUI-Kit.git", from: "1.0.0")
+    .package(url: "https://github.com/YourUsername/SwiftUIKit.git", from: "1.0.0")
 ]
 
-Then add `SwiftUI-Kit` as a dependency for your target:
+Then add `SwiftUIKit` as a dependency for your target:
 
 ```swift
 targets: [
     .target(
         name: "YourTargetName",
-        dependencies: ["SwiftUI-Kit"]
+        dependencies: ["SwiftUIKit"]
     )
 ]
 

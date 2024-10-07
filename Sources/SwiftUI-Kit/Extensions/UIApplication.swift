@@ -1,6 +1,6 @@
 //===--- UIApplication+Extensions.swift --------------------------===//
 //
-// This source file is part of the SwiftUI-Kit open source project
+// This source file is part of the SwiftUIKit open source project
 //
 // Copyright (c) 2024 You are launched
 // Licensed under MIT License
