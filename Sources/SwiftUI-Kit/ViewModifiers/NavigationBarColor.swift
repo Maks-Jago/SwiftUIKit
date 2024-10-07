@@ -1,14 +1,25 @@
+//===--- NavigationBarColor.swift --------------------------------===//
 //
-//  NavigationBarColor.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUI-Kit open source project
 //
-//  Created by Max Kuznetsov on 25.10.2020.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SwiftUI
 
 public extension View {
+    
+    /// Modifies the navigation bar's color, shadow, and title color.
+    /// - Parameters:
+    ///   - backgroundColor: The background color of the navigation bar. Default is `.white`.
+    ///   - shadowColor: The color of the navigation bar's shadow. Default is `.clear`.
+    ///   - titleColor: The color of the navigation bar's title. Default is `.black`.
+    /// - Returns: A view modified with the specified navigation bar colors.
     func navigationBarColor(_ backgroundColor: UIColor = .white, shadowColor: UIColor = .clear, titleColor: UIColor = .black) -> some View {
         self.modifier(NavigationBarColor(backgroundColor: backgroundColor, shadowColor: shadowColor, titleColor: titleColor))
     }
@@ -37,8 +48,8 @@ private struct NavigationBarColor: ViewModifier {
     
     func body(content: Content) -> some View {
         ZStack {
-            content.configureNavigationController { navContoller in
-                navContoller.navigationBar.backgroundColor = backgroundColor
+            content.configureNavigationController { navController in
+                navController.navigationBar.backgroundColor = backgroundColor
             }
             
             VStack {
