@@ -1,19 +1,26 @@
+//===--- SafariView.swift ----------------------------------------===//
 //
-//  SafariView.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUI-Kit open source project
 //
-//  Created by Max Kuznetsov on 25.10.2020.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SafariServices
 import SwiftUI
 
+/// A SwiftUI wrapper for `SFSafariViewController` to display a webpage using Safari in-app.
 public struct SafariView: UIViewControllerRepresentable {
     public typealias UIViewControllerType = SFSafariViewController
     
     public let url: URL
     
+    /// Creates a `SafariView`.
+    /// - Parameter url: The URL of the webpage to display.
     public init(url: URL) {
         self.url = url
     }

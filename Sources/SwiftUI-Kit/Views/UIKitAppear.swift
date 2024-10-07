@@ -1,14 +1,22 @@
+//===--- UIKitAppear.swift ---------------------------------------===//
 //
-//  UIKitAppear.swift
-//  
+// This source file is part of the SwiftUI-Kit open source project
 //
-//  Created by Max Kuznetsov on 01.04.2021.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SwiftUI
 
 public extension View {
+    
+    /// Executes a closure when the view appears, using UIKit's `viewDidAppear`.
+    /// - Parameter perform: A closure to execute when the view appears.
+    /// - Returns: A modified view that performs the closure on appear.
     func uiKitOnAppear(_ perform: @escaping () -> Void) -> some View {
         self.background(UIKitAppear(action: perform))
     }

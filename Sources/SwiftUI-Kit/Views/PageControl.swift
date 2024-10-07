@@ -1,17 +1,26 @@
+//===--- PageControl.swift ---------------------------------------===//
 //
-//  PageControl.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUI-Kit open source project
 //
-//  Created by Max Kuznetsov on 25.10.2020.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SwiftUI
 
+/// A SwiftUI wrapper for `UIPageControl` to display and control a page-based interface.
 public struct PageControl: UIViewRepresentable {
     public var numberOfPages: Int
     @Binding public var currentPage: Int
     
+    /// Creates a `PageControl`.
+    /// - Parameters:
+    ///   - numberOfPages: The total number of pages to display in the page control.
+    ///   - currentPage: A binding to the current page index.
     public init(numberOfPages: Int, currentPage: Binding<Int>) {
         self.numberOfPages = numberOfPages
         self._currentPage = currentPage
@@ -39,6 +48,7 @@ public struct PageControl: UIViewRepresentable {
         uiView.currentPage = currentPage
     }
     
+    /// A coordinator class to manage changes to the page control's current page.
     public final class Coordinator: NSObject {
         var control: PageControl
         
@@ -46,6 +56,7 @@ public struct PageControl: UIViewRepresentable {
             self.control = control
         }
         
+        /// Updates the current page when the page control value changes.
         @objc
         func updateCurrentPage(sender: UIPageControl) {
             control.currentPage = sender.currentPage

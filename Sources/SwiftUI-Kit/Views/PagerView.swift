@@ -1,18 +1,28 @@
+//===--- PagerView.swift -----------------------------------------===//
 //
-//  PagerView.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUI-Kit open source project
 //
-//  Created by Max Kuznetsov on 25.10.2020.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SwiftUI
 
+/// A view that displays a paginated, swipeable collection of pages.
 public struct PagerView<Page: View>: View {
     @Binding public var pageSelection: Int
     public var pages: [Page]
     private var dispayPagesIndicator: Bool = false
     
+    /// Creates a `PagerView` with a single content view.
+    /// - Parameters:
+    ///   - pageSelection: A binding to track the current page. Default is `nil`.
+    ///   - dispayPagesIndicator: A Boolean value indicating whether to display the page indicator. Default is `true`.
+    ///   - content: A closure that provides the content view.
     @available(iOS 14, *)
     public init(pageSelection: Binding<Int>? = nil, dispayPagesIndicator: Bool = true, @ViewBuilder content: () -> Page) {
         self._pageSelection = pageSelection ?? .constant(0)
@@ -20,6 +30,10 @@ public struct PagerView<Page: View>: View {
         self.pages = [content()]
     }
     
+    /// Creates a `PagerView` with an array of pages.
+    /// - Parameters:
+    ///   - pageSelection: A binding to track the current page. Default is `nil`.
+    ///   - pages: An array of views to display as pages.
     public init(pageSelection: Binding<Int>? = nil, pages: [Page]) {
         self._pageSelection = pageSelection ?? .constant(0)
         self.pages = pages
@@ -63,7 +77,6 @@ struct PagerView_Previews: PreviewProvider {
         }
     }
 }
-
 
 private struct PageViewController: UIViewControllerRepresentable {
     var controllers: [UIViewController]
@@ -131,8 +144,7 @@ private struct PageViewController: UIViewControllerRepresentable {
         func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
             if completed,
                let visibleViewController = pageViewController.viewControllers?.first,
-               let index = parent.controllers.firstIndex(of: visibleViewController)
-            {
+               let index = parent.controllers.firstIndex(of: visibleViewController) {
                 parent.currentPage = index
             }
         }

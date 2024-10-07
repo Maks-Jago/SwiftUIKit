@@ -1,14 +1,19 @@
+//===--- MailView.swift ------------------------------------------===//
 //
-//  MailView.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUI-Kit open source project
 //
-//  Created by  Vladyslav Fil on 22.09.2021.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SwiftUI
 import MessageUI
 
+/// A SwiftUI wrapper for `MFMailComposeViewController` to present a mail composition interface.
 public struct MailView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) private var presentation
@@ -18,33 +23,34 @@ public struct MailView: UIViewControllerRepresentable {
     var subject: String
     var body: String
     
+    /// Creates a `MailView` to compose and send an email.
+    /// - Parameters:
+    ///   - result: A binding to capture the result of the mail composition. It is set to `.success(())` if the email is sent, or to `.failure(Error)` if an error occurs.
+    ///   - recepients: An optional list of recipient email addresses. Default is `nil`.
+    ///   - subject: The subject of the email. Default is an empty string.
+    ///   - body: The body text of the email. Default is an empty string.
     public init(result: Binding<Result<Void, Error>?>, recepients: [String]? = nil, subject: String = "", body: String = "") {
         self._result = result
         self.recepients = recepients
         self.subject = subject
         self.body = body
     }
-
+    
     public class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
         
         @Binding var presentation: PresentationMode
         @Binding var result: Result<Void, Error>?
         
-        init(presentation: Binding<PresentationMode>,
-             result: Binding<Result<Void, Error>?>) {
+        init(presentation: Binding<PresentationMode>, result: Binding<Result<Void, Error>?>) {
             _presentation = presentation
             _result = result
         }
         
-        public func mailComposeController(_ controller: MFMailComposeViewController,
-                                   didFinishWith result: MFMailComposeResult,
-                                   error: Error?) {
+        public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
             if let error = error {
                 self.result = .failure(error)
-            } else {
-                if case .sent = result {
-                    self.result = .success(())
-                }
+            } else if case .sent = result {
+                self.result = .success(())
             }
             
             controller.dismiss(animated: true, completion: nil)
