@@ -1,13 +1,19 @@
+//===--- PreviewDevice.swift -------------------------------------===//
 //
-//  PreviewDevice.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUIKit open source project
 //
-//  Created by Max Kuznetsov on 25.10.2020.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 import SwiftUI
 
 public extension PreviewDevice {
+    
+    /// Commonly used `PreviewDevice` instances for different iPhone models.
     static let iPhoneSE: PreviewDevice = .init(rawValue: "iPhone SE (1st generation)")
     static let iPhoneSE2: PreviewDevice = .init(rawValue: "iPhone SE (2nd generation)")
     static let iPhone8: PreviewDevice = .init(rawValue: "iPhone 8")
@@ -19,6 +25,12 @@ public extension PreviewDevice {
 
 // MARK: - PreviewOnDevices
 public extension PreviewDevice {
+    
+    /// Creates a preview of the given content on multiple devices.
+    /// - Parameters:
+    ///   - devices: An array of `PreviewDevice` instances. Defaults to all available devices.
+    ///   - contentBuilder: A view builder that creates the content to be previewed.
+    /// - Returns: A view that displays the content on each specified device.
     static func previewOnDevices<V: View>(_ devices: [PreviewDevice] = PreviewDevice.allCases, @ViewBuilder contentBuilder: @escaping () -> V) -> some View {
         Group {
             ForEach(devices) {
@@ -32,10 +44,14 @@ public extension PreviewDevice {
 
 // MARK: - Identifiable
 extension PreviewDevice: Identifiable {
+    
+    /// A unique identifier for each `PreviewDevice`.
     public var id: String { rawValue }
 }
 
 // MARK: - CaseIterable
 extension PreviewDevice: CaseIterable {
+    
+    /// A collection of all available `PreviewDevice` instances.
     public static var allCases: [PreviewDevice] = [.iPhone11ProMax, .iPhone11Pro, .iPhone11, .iPhone8Plus, .iPhone8, .iPhoneSE]
 }

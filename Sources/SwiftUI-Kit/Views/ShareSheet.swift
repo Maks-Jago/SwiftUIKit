@@ -1,13 +1,18 @@
+//===--- ShareSheet.swift ----------------------------------------===//
 //
-//  ShareSheet.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUIKit open source project
 //
-//  Created by Max Kuznetsov on 25.10.2020.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SwiftUI
 
+/// A SwiftUI wrapper for `UIActivityViewController` to share items using the system share sheet.
 public struct ShareSheet: UIViewControllerRepresentable {
     public typealias Callback = (_ activityType: UIActivity.ActivityType?, _ completed: Bool, _ returnedItems: [Any]?, _ error: Error?) -> Void
     
@@ -16,7 +21,18 @@ public struct ShareSheet: UIViewControllerRepresentable {
     public var excludedActivityTypes: [UIActivity.ActivityType]? = nil
     public var callback: Callback? = nil
     
-    public init(activityItems: [Any], applicationActivities: [UIActivity]? = nil, excludedActivityTypes: [UIActivity.ActivityType]? = nil, callback: ShareSheet.Callback? = nil) {
+    /// Creates a `ShareSheet`.
+    /// - Parameters:
+    ///   - activityItems: The items to share.
+    ///   - applicationActivities: An array of custom activities to display in the share sheet. Default is `nil`.
+    ///   - excludedActivityTypes: An array of activity types to exclude from the share sheet. Default is `nil`.
+    ///   - callback: A closure to handle the completion of the share action. Default is `nil`.
+    public init(
+        activityItems: [Any],
+        applicationActivities: [UIActivity]? = nil,
+        excludedActivityTypes: [UIActivity.ActivityType]? = nil,
+        callback: ShareSheet.Callback? = nil
+    ) {
         self.activityItems = activityItems
         self.applicationActivities = applicationActivities
         self.excludedActivityTypes = excludedActivityTypes

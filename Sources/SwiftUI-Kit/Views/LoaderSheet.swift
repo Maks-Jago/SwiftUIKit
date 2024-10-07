@@ -1,15 +1,29 @@
+//===--- LoaderSheet.swift ---------------------------------------===//
 //
-//  LoaderSheet.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUIKit open source project
 //
-//  Created by Max Kuznetsov on 25.10.2020.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SwiftUI
 
 @available(iOS 14.0, *)
 public extension View {
+    
+    /// Displays a loading sheet with an activity indicator and a customizable title.
+    /// - Parameters:
+    ///   - isPresented: A binding that controls whether the loader sheet is presented.
+    ///   - title: The title to display on the loader sheet. Default is "Loading...".
+    ///   - font: The font to use for the title. Default is `.body`.
+    ///   - indicatorColor: The color of the activity indicator. Default is `.black`.
+    ///   - titleColor: The color of the title text. Default is `.black`.
+    ///   - backgroundColor: The background color of the loader sheet. Default is `.white`.
+    /// - Returns: A modified view that displays the loader sheet when `isPresented` is `true`.
     func loaderSheet(
         isPresented: Binding<Bool>,
         title: String = Bundle.main.localizedString(forKey: "Loading...", value: nil, table: nil),
@@ -40,6 +54,14 @@ public struct LoaderSheet: ViewModifier {
     public let titleColor: Color
     public let backgroundColor: Color
     
+    /// Creates a `LoaderSheet` view modifier.
+    /// - Parameters:
+    ///   - isPresented: A binding that controls whether the loader sheet is presented.
+    ///   - title: The title to display on the loader sheet.
+    ///   - font: The font to use for the title.
+    ///   - indicatorColor: The color of the activity indicator.
+    ///   - titleColor: The color of the title text.
+    ///   - backgroundColor: The background color of the loader sheet.
     public init(
         isPresented: Binding<Bool>,
         title: String,

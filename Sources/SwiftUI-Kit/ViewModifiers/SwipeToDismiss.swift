@@ -1,18 +1,29 @@
+//===--- SwipeToDismiss.swift ------------------------------------===//
 //
-//  SwipeToDismiss.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUIKit open source project
 //
-//  Created by Max Kuznetsov on 25.10.2020.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SwiftUI
 
 public extension View {
+    
+    /// Allows swipe-to-dismiss behavior on the view based on a custom condition.
+    /// - Parameter dismissable: A closure that returns a Boolean value indicating whether the view can be dismissed.
+    /// - Returns: A modified view that supports swipe-to-dismiss behavior.
     func allowSwipeToDismiss(_ dismissable: @escaping () -> Bool) -> some View {
         background(SwipeToDismissWrapper(dismissable: dismissable))
     }
     
+    /// Allows swipe-to-dismiss behavior on the view based on a fixed Boolean value.
+    /// - Parameter dismiss: A Boolean value indicating whether the view can be dismissed.
+    /// - Returns: A modified view that supports swipe-to-dismiss behavior.
     func allowSwipeToDismiss(_ dismiss: Bool) -> some View {
         background(SwipeToDismissWrapper(dismissable: { dismiss }))
     }
@@ -45,6 +56,9 @@ private struct SwipeToDismissWrapper: UIViewControllerRepresentable {
         }
     }
     
+    /// Recursively finds the root view controller from a given view controller.
+    /// - Parameter uiViewController: The view controller to start the search from.
+    /// - Returns: The root view controller.
     private func rootViewController(of uiViewController: UIViewController) -> UIViewController {
         if let parent = uiViewController.parent {
             return rootViewController(of: parent)

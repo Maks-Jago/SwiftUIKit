@@ -1,20 +1,29 @@
+//===--- PencilKitView.swift -------------------------------------===//
 //
-//  PencilKitView.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUIKit open source project
 //
-//  Created by  Vladyslav Fil on 22.09.2021.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 import SwiftUI
 import PencilKit
 #if os(iOS)
 
 @available(iOS 14, *)
-public struct PencilKitView : UIViewRepresentable {
+/// A SwiftUI wrapper for `PKCanvasView`, allowing users to draw using PencilKit.
+public struct PencilKitView: UIViewRepresentable {
     
     @Binding var canvas: PKCanvasView
     var onChanged: () -> Void
     
+    /// Creates a `PencilKitView`.
+    /// - Parameters:
+    ///   - canvas: A binding to a `PKCanvasView` that provides the drawing canvas.
+    ///   - onChanged: A closure called whenever the canvas drawing changes. Default is an empty closure.
     public init(canvas: Binding<PKCanvasView>, onChanged: @escaping () -> Void = {}) {
         self._canvas = canvas
         self.onChanged = onChanged
@@ -35,10 +44,15 @@ public struct PencilKitView : UIViewRepresentable {
     }
 }
 
+/// A coordinator to handle `PKCanvasView` delegate methods.
 public class Coordinator: NSObject {
     var canvas: Binding<PKCanvasView>
     let onChanged: () -> Void
-
+    
+    /// Initializes a `Coordinator`.
+    /// - Parameters:
+    ///   - canvas: A binding to the `PKCanvasView`.
+    ///   - onChanged: A closure to call when the canvas drawing changes.
     init(canvas: Binding<PKCanvasView>, onChanged: @escaping () -> Void) {
         self.canvas = canvas
         self.onChanged = onChanged
@@ -46,6 +60,9 @@ public class Coordinator: NSObject {
 }
 
 extension Coordinator: PKCanvasViewDelegate {
+    
+    /// Called when the drawing on the canvas view changes.
+    /// - Parameter canvasView: The `PKCanvasView` whose drawing has changed.
     public func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         onChanged()
     }

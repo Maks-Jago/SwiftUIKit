@@ -1,17 +1,24 @@
+//===--- VideoPlayer.swift ---------------------------------------===//
 //
-//  VideoPlayer.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUIKit open source project
 //
-//  Created by Max Kuznetsov on 25.10.2020.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SwiftUI
 import AVKit
 
+/// A SwiftUI wrapper for `AVPlayerViewController` to play videos using a specified URL path.
 public struct VideoPlayerView: UIViewControllerRepresentable {
     public var videoUrlPath: String
     
+    /// Creates a `VideoPlayerView`.
+    /// - Parameter videoUrlPath: The URL path of the video to play.
     public init(videoUrlPath: String) {
         self.videoUrlPath = videoUrlPath
     }

@@ -1,19 +1,28 @@
+//===--- Color.swift ---------------------------------------------===//
 //
-//  Color.swift
-//  SwiftUIKit
+// This source file is part of the SwiftUIKit open source project
 //
-//  Created by Max Kuznetsov on 25.10.2020.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 #if canImport(UIKit)
 import SwiftUI
 
 public extension Color {
+    
+    /// Converts the `Color` to a `UIColor` instance.
+    /// - Returns: A `UIColor` that represents the SwiftUI `Color`.
     func uiColor() -> UIColor {
         let components = self.components()
         return UIColor(red: components.r, green: components.g, blue: components.b, alpha: components.a)
     }
     
+    /// Extracts the RGBA components from the `Color`.
+    /// - Returns: A tuple containing the red, green, blue, and alpha components as `CGFloat` values.
     private func components() -> (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) {
         let scanner = Scanner(string: self.description.trimmingCharacters(in: CharacterSet.alphanumerics.inverted))
         var hexNumber: UInt64 = 0
@@ -31,6 +40,9 @@ public extension Color {
 }
 
 public extension Color {
+    
+    /// Initializes a `Color` from a hexadecimal string.
+    /// - Parameter hex: A hexadecimal string representing the color. Supports 3, 6, or 8 digit hex codes.
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int: UInt64 = 0

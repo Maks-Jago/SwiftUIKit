@@ -1,12 +1,18 @@
+//===--- AnimatedRedacted.swift ----------------------------------===//
 //
-//  AnimatedRedacted.swift
-//  
+// This source file is part of the SwiftUIKit open source project
 //
-//  Created by Alexander Sharko on 13.02.2023.
+// Copyright (c) 2024 You are launched
+// Licensed under MIT License
 //
+// See https://opensource.org/licenses/MIT for license information
+//
+//===----------------------------------------------------------------------===//
 
 import SwiftUI
 
+/// A view modifier that applies an animated redacted effect to a view.
+/// When the effect is active, it overlays a gradient animation over the content, creating a shimmering effect.
 public struct AnimatedRedactedModifier: ViewModifier {
     public var isActive: Bool
     public var backgroundColor: Color
@@ -14,6 +20,11 @@ public struct AnimatedRedactedModifier: ViewModifier {
     
     @State private var animated: Bool
     
+    /// Creates an `AnimatedRedactedModifier`.
+    /// - Parameters:
+    ///   - isActive: A Boolean value that determines whether the redacted effect is active.
+    ///   - backgroundColor: The background color of the redacted effect. Default is `.gray`.
+    ///   - overlayGradient: The gradient overlay used for the shimmering effect. Default is a clear-to-gray gradient.
     public init(
         isActive: Bool,
         backgroundColor: Color = .gray,
@@ -48,7 +59,7 @@ public struct AnimatedRedactedModifier: ViewModifier {
                                 .onAppear { animated = true }
                         }
                     }
-                    .mask(Rectangle())
+                        .mask(Rectangle())
                 )
             }
     }
