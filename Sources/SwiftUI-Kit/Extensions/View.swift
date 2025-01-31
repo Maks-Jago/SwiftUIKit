@@ -238,6 +238,25 @@ public extension View {
                 self
             }
         }
+    
+    /// Displays a full screen placeholder view when a condition is met.
+    /// - Parameters:
+    ///   - shouldShow: A Boolean value that determines whether to show the placeholder.
+    ///   - alignment: The alignment of the placeholder within the view. Default is `.center`.
+    ///   - placeholder: A view builder that creates the placeholder view.
+    /// - Returns: A modified view that overlays the placeholder based on the condition.
+    func fullScreenPlaceholder<Content: View>(
+        when shouldShow: Bool,
+        alignment: Alignment = .center,
+        @ViewBuilder placeholder: () -> Content
+    ) -> some View {
+        ZStack(alignment: alignment) {
+            self.opacity(shouldShow ? 0 : 1)
+            if shouldShow {
+                placeholder().opacity(shouldShow ? 1 : 0)
+            }
+        }
+    }
 }
 
 // MARK: - Fixed Size
