@@ -230,13 +230,12 @@ public extension View {
     /// - Returns: A modified view that overlays the placeholder based on the condition.
     func placeholder<Content: View>(
         when shouldShow: Bool,
-        alignment: Alignment = .center,
+        alignment: Alignment = .leading,
         @ViewBuilder placeholder: () -> Content) -> some View {
+            
             ZStack(alignment: alignment) {
-                self.opacity(shouldShow ? 0 : 1)
-                if shouldShow {
-                    placeholder().opacity(shouldShow ? 1 : 0)
-                }
+                placeholder().opacity(shouldShow ? 1 : 0)
+                self
             }
         }
 }
