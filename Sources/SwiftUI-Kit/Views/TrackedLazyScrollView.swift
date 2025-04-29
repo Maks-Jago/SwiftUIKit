@@ -53,8 +53,9 @@ public struct TrackableItemView<Content: View>: View {
 
 // MARK: - Generic public VisibilityTracker
 @available(iOS 14, *)
-public struct TrackedLazyScrollView<Item: Identifiable, Content: View>: View where Item.ID: LosslessStringConvertible & Hashable {
+public struct TrackedLazyScrollView<Item: Identifiable, Content: View, Header: View>: View where Item.ID: LosslessStringConvertible & Hashable {
     public let items: [Item]
+    public let header: () -> Header
     public let content: (Item) -> Content
     public let onVisibilityChange: (Set<Item.ID>) -> Void
     public let coordinateSpaceName: String = "scrollArea"
@@ -65,14 +66,29 @@ public struct TrackedLazyScrollView<Item: Identifiable, Content: View>: View whe
         items: [Item],
         @ViewBuilder content: @escaping (Item) -> Content,
         onVisibilityChange: @escaping (Set<Item.ID>) -> Void
+    ) where Header == EmptyView {
+        self.items = items
+        self.content = content
+        self.onVisibilityChange = onVisibilityChange
+        self.header = { EmptyView () }
+    }
+
+    public init(
+        items: [Item],
+        @ViewBuilder header: @escaping () -> Header,
+        @ViewBuilder content: @escaping (Item) -> Content,
+        onVisibilityChange: @escaping (Set<Item.ID>) -> Void
     ) {
         self.items = items
         self.content = content
         self.onVisibilityChange = onVisibilityChange
+        self.header = header
     }
 
     public var body: some View {
         ScrollView {
+            header()
+
             LazyVStack(spacing: 20) {
                 ForEach(items) { item in
                     TrackableItemView(id: String(item.id)) {
