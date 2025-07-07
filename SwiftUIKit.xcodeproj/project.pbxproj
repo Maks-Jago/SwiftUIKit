@@ -57,6 +57,7 @@
 		8278331A26FB77060008252A /* PencilKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278331926FB77060008252A /* PencilKitView.swift */; };
 		8278331C26FB784F0008252A /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278331B26FB784F0008252A /* MailView.swift */; };
 		8278334C26FCCD630008252A /* Text+NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278334B26FCCD630008252A /* Text+NSAttributedString.swift */; };
+		BDD06D9F2E1BE8AB00B2FF45 /* DropdownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD06D9E2E1BE8A800B2FF45 /* DropdownPicker.swift */; };
 		OBJ_30 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_44 /* SwiftUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftUIKit::SwiftUIKit::Product" /* SwiftUIKit.framework */; };
 /* End PBXBuildFile section */
@@ -115,6 +116,7 @@
 		8278331926FB77060008252A /* PencilKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitView.swift; sourceTree = "<group>"; };
 		8278331B26FB784F0008252A /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		8278334B26FCCD630008252A /* Text+NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text+NSAttributedString.swift"; sourceTree = "<group>"; };
+		BDD06D9E2E1BE8A800B2FF45 /* DropdownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownPicker.swift; sourceTree = "<group>"; };
 		OBJ_17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"SwiftUIKit::SwiftUIKit::Product" /* SwiftUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +189,7 @@
 		50831E7E2545D29F00DC7EF6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BDD06D9E2E1BE8A800B2FF45 /* DropdownPicker.swift */,
 				50831E8F2545D3C000DC7EF6 /* ActivityIndicator.swift */,
 				50831EE12545E0FE00DC7EF6 /* IfLetView.swift */,
 				50831E7F2545D2B700DC7EF6 /* IfLetViewPlaceholder.swift */,
@@ -350,6 +353,7 @@
 				8278331A26FB77060008252A /* PencilKitView.swift in Sources */,
 				50831EE22545E0FE00DC7EF6 /* IfLetView.swift in Sources */,
 				50831FBB2545F65000DC7EF6 /* Color.swift in Sources */,
+				BDD06D9F2E1BE8AB00B2FF45 /* DropdownPicker.swift in Sources */,
 				50831E9C2545D4A400DC7EF6 /* PageControl.swift in Sources */,
 				8278334C26FCCD630008252A /* Text+NSAttributedString.swift in Sources */,
 				50831E902545D3C000DC7EF6 /* ActivityIndicator.swift in Sources */,
