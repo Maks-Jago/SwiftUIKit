@@ -103,3 +103,92 @@ public extension StringProtocol {
         return result
     }
 }
+
+// MARK: HTML
+/// Example usage:
+/// ```swift
+/// let attributedString = model.htmlDescription
+///                             .htmlWithListMarkers()
+///                             .convertHtmlUTF16()
+///
+/// ```
+public extension String {
+    /// Converts the string (assumed to be HTML) into an `NSAttributedString` using UTF-16 encoding.
+    ///
+    /// This method injects default styling into the HTML content (using `Montserrat-Medium` at 14pt)
+    /// and attempts to parse it as a styled `NSAttributedString`.
+    ///
+    /// - Returns: An optional `NSAttributedString` if conversion succeeds; otherwise, `nil`.
+    func convertHtmlUTF16(fontFamily: String, fontSize: CGFloat) -> NSAttributedString? {
+        let htmlWithStyles = """
+        <style>
+        body {
+            font-family: '\(fontFamily)', sans-serif;
+            font-size: \(fontSize)px;
+        }
+        </style>
+        \(self)
+        """
+
+        guard let styledData = htmlWithStyles.data(using: .utf16),
+              let attributedString = try? NSAttributedString(
+                  data: styledData,
+                  options: [
+                      .documentType: NSAttributedString.DocumentType.html,
+                      .characterEncoding: String.Encoding.utf16.rawValue,
+                  ],
+                  documentAttributes: nil
+              ) else { return nil }
+
+        return attributedString
+    }
+
+    /// Transforms custom HTML list markers from Quill.js (or similar editors) into standard list formats.
+    ///
+    /// Specifically:
+    /// - Replaces bullet lists (with `data-list="bullet"`) with `"•"` prefix.
+    /// - Replaces ordered lists (with `data-list="ordered"`) by prepending index numbers like `1.`, `2.`, etc.
+    ///
+    /// This is useful when handling raw HTML exported from rich text editors that use `<span class="ql-ui">` elements
+    /// to simulate list bullets/numbers, which aren't visually meaningful in native rendering.
+    ///
+    /// - Returns: A modified HTML string with recognizable list markers.
+    func htmlWithListMarkers() -> String {
+        var html = self
+
+        let bulletPattern = #"<li\s+data-list="bullet"><span class="ql-ui"[^>]*></span>"#
+        html = html.replacingOccurrences(
+            of: bulletPattern,
+            with: "<li>• ",
+            options: .regularExpression
+        )
+
+        let orderedPattern = #"<li\s+data-list="ordered"><span class="ql-ui"[^>]*></span>"#
+        guard let regex = try? NSRegularExpression(
+            pattern: orderedPattern,
+            options: []
+        ) else {
+            return html
+        }
+
+        var counter = 0
+        let matches = regex.matches(
+            in: html,
+            options: [],
+            range: NSRange(html.startIndex..., in: html)
+        )
+        var result = ""
+        var lastIndex = html.startIndex
+
+        for m in matches {
+            let range = Range(m.range, in: html)!
+            result += String(html[lastIndex ..< range.lowerBound])
+            counter += 1
+            result += "<li>\(counter). "
+            lastIndex = range.upperBound
+        }
+
+        result += String(html[lastIndex...])
+        return result
+    }
+}

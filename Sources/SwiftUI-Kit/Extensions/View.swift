@@ -437,3 +437,27 @@ public struct SizePreferenceKey: PreferenceKey {
         value = nextValue()
     }
 }
+
+// MARK: Background Rounded Rectangle
+public extension View {
+    /// Wraps the current view with padding, a background color, and rounded corners.
+        ///
+        /// This modifier adds padding around the content, applies a background color,
+        /// and clips the result with a `RoundedRectangle` to achieve a card-like appearance.
+        ///
+        /// - Parameters:
+        ///   - backgroundColor: The background color to apply. Default is `.white`.
+        ///   - cornerRadius: The radius of the rounded corners. Default is `24`.
+        ///   - paddingInsets: The padding to apply around the content. Default is `16` points on all sides.
+        ///
+        /// - Returns: A view with padding, background color, and rounded corners.
+    func backgroundRoundedRectangle(
+        backgroundColor: Color = .white,
+        cornerRadius: CGFloat = 24,
+        paddingInsets: EdgeInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
+    ) -> some View {
+        padding(paddingInsets)
+            .background(backgroundColor)
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+    }
+}
