@@ -12,3 +12,14 @@ public extension Collection {
         !isEmpty
     }
 }
+
+public extension Collection where Self.Element: Hashable {
+    /// Returns a Boolean value indicating whether the collection contains the specified `AnyHashable` element.
+    /// - Parameter element: The `AnyHashable` element to search for in the collection.
+    /// - Returns: `true` if the collection contains the specified element; otherwise, `false`.
+    func contains(_ element: AnyHashable) -> Bool {
+        contains { elem  in
+            AnyHashable(elem) == element
+        }
+    }
+}
