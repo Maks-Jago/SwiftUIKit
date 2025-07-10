@@ -60,6 +60,7 @@
 		BDD06DA12E1BF00A00B2FF45 /* TextOverflowingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD06DA02E1BEFFC00B2FF45 /* TextOverflowingModifier.swift */; };
 		BDD06DA52E1BFB5000B2FF45 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD06DA42E1BFB4D00B2FF45 /* Text.swift */; };
 		BDD06DA72E1BFD8D00B2FF45 /* ZoomableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD06DA62E1BFD8900B2FF45 /* ZoomableScrollView.swift */; };
+		BDDCFDB62E200951000CB717 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDCFDB52E20094F000CB717 /* String.swift */; };
 		BDDE180F2E1D6CAC0006EBE9 /* View+PresentationDetents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE180E2E1D6CA60006EBE9 /* View+PresentationDetents.swift */; };
 		BDDE18112E1D70D90006EBE9 /* AlwaysPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE18102E1D70D30006EBE9 /* AlwaysPopover.swift */; };
 		BDDE18132E1DAA1C0006EBE9 /* KeyboardPaddingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE18122E1DAA150006EBE9 /* KeyboardPaddingModifier.swift */; };
@@ -134,6 +135,7 @@
 		BDD06DA02E1BEFFC00B2FF45 /* TextOverflowingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOverflowingModifier.swift; sourceTree = "<group>"; };
 		BDD06DA42E1BFB4D00B2FF45 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		BDD06DA62E1BFD8900B2FF45 /* ZoomableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableScrollView.swift; sourceTree = "<group>"; };
+		BDDCFDB52E20094F000CB717 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		BDDE180E2E1D6CA60006EBE9 /* View+PresentationDetents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+PresentationDetents.swift"; sourceTree = "<group>"; };
 		BDDE18102E1D70D30006EBE9 /* AlwaysPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlwaysPopover.swift; sourceTree = "<group>"; };
 		BDDE18122E1DAA150006EBE9 /* KeyboardPaddingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPaddingModifier.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		50831E4D2545CBB400DC7EF6 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				BDDCFDB42E200935000CB717 /* InternalExtensions */,
 				BDDE18142E1DAB440006EBE9 /* View+Snapshot.swift */,
 				BDDE180E2E1D6CA60006EBE9 /* View+PresentationDetents.swift */,
 				BDD06DA42E1BFB4D00B2FF45 /* Text.swift */,
@@ -249,6 +252,14 @@
 				8278331B26FB784F0008252A /* MailView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BDDCFDB42E200935000CB717 /* InternalExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				BDDCFDB52E20094F000CB717 /* String.swift */,
+			);
+			path = InternalExtensions;
 			sourceTree = "<group>";
 		};
 		BDDE18222E1E6EAE0006EBE9 /* HorizontalSlider */ = {
@@ -389,6 +400,7 @@
 				BDDE18132E1DAA1C0006EBE9 /* KeyboardPaddingModifier.swift in Sources */,
 				8278331C26FB784F0008252A /* MailView.swift in Sources */,
 				50831E8A2545D35900DC7EF6 /* RoundedCorner.swift in Sources */,
+				BDDCFDB62E200951000CB717 /* String.swift in Sources */,
 				BDDE18262E1E6EFA0006EBE9 /* HorizontalSliderStile.swift in Sources */,
 				BDDE181F2E1E6D4E0006EBE9 /* UIScrollViewWrapper.swift in Sources */,
 				50831E542545CCB000DC7EF6 /* Common.swift in Sources */,
