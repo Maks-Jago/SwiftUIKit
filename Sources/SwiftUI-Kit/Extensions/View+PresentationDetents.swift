@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension View {
+public extension View {
 
     /// Presents a bottom sheet when the given item is non-nil, with support for detent selection.
     /// - Parameters:

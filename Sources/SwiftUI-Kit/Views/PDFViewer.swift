@@ -9,22 +9,22 @@ import PDFKit
 import SwiftUI
 
 /// A SwiftUI wrapper for displaying PDF documents using `PDFView`.
-struct PDFViewer: UIViewRepresentable {
+public struct PDFViewer: UIViewRepresentable {
     var url: URL?
     var data: Data?
 
     /// Initializes the viewer with a file URL to a PDF.
-    init(url: URL?) {
+    public init(url: URL?) {
         self.url = url
     }
 
     /// Initializes the viewer with raw PDF data.
-    init(data: Data?) {
+    public init(data: Data?) {
         self.data = data
     }
 
     /// Creates the `PDFView` instance and configures it with the initial document.
-    func makeUIView(context: Context) -> PDFView {
+    public func makeUIView(context: Context) -> PDFView {
         let pdfView = PDFView()
 
         if let url {
@@ -39,7 +39,7 @@ struct PDFViewer: UIViewRepresentable {
     }
 
     /// Updates the `PDFView` when SwiftUI state changes.
-    func updateUIView(_ uiView: PDFView, context: Context) {
+    public func updateUIView(_ uiView: PDFView, context: Context) {
         // If a new URL is provided, update the document.
         if let url {
             uiView.document = PDFDocument(url: url)

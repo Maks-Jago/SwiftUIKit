@@ -39,7 +39,6 @@
 		50831ED42545E09A00DC7EF6 /* View+Embed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831ED32545E09A00DC7EF6 /* View+Embed.swift */; };
 		50831EE22545E0FE00DC7EF6 /* IfLetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831EE12545E0FE00DC7EF6 /* IfLetView.swift */; };
 		50831EEC2545E16600DC7EF6 /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831EEB2545E16600DC7EF6 /* Alerts.swift */; };
-		50831EF22545E21400DC7EF6 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831EF12545E21400DC7EF6 /* String.swift */; };
 		50831EF82545E46100DC7EF6 /* NavigationControllerConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831EF72545E46100DC7EF6 /* NavigationControllerConfigurator.swift */; };
 		50831F022545E6D600DC7EF6 /* NavigationBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F012545E6D600DC7EF6 /* NavigationBarColor.swift */; };
 		50831F0C2545E94300DC7EF6 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50831F0B2545E94300DC7EF6 /* VisualEffectView.swift */; };
@@ -59,7 +58,6 @@
 		8278334C26FCCD630008252A /* Text+NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8278334B26FCCD630008252A /* Text+NSAttributedString.swift */; };
 		BDD06D9F2E1BE8AB00B2FF45 /* DropdownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD06D9E2E1BE8A800B2FF45 /* DropdownPicker.swift */; };
 		BDD06DA12E1BF00A00B2FF45 /* TextOverflowingModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD06DA02E1BEFFC00B2FF45 /* TextOverflowingModifier.swift */; };
-		BDD06DA32E1BFA1C00B2FF45 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD06DA22E1BFA1900B2FF45 /* Collection.swift */; };
 		BDD06DA52E1BFB5000B2FF45 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD06DA42E1BFB4D00B2FF45 /* Text.swift */; };
 		BDD06DA72E1BFD8D00B2FF45 /* ZoomableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD06DA62E1BFD8900B2FF45 /* ZoomableScrollView.swift */; };
 		BDDE180F2E1D6CAC0006EBE9 /* View+PresentationDetents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE180E2E1D6CA60006EBE9 /* View+PresentationDetents.swift */; };
@@ -115,7 +113,6 @@
 		50831ED32545E09A00DC7EF6 /* View+Embed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Embed.swift"; sourceTree = "<group>"; };
 		50831EE12545E0FE00DC7EF6 /* IfLetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IfLetView.swift; sourceTree = "<group>"; };
 		50831EEB2545E16600DC7EF6 /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
-		50831EF12545E21400DC7EF6 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		50831EF72545E46100DC7EF6 /* NavigationControllerConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerConfigurator.swift; sourceTree = "<group>"; };
 		50831F012545E6D600DC7EF6 /* NavigationBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarColor.swift; sourceTree = "<group>"; };
 		50831F0B2545E94300DC7EF6 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
@@ -135,7 +132,6 @@
 		8278334B26FCCD630008252A /* Text+NSAttributedString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Text+NSAttributedString.swift"; sourceTree = "<group>"; };
 		BDD06D9E2E1BE8A800B2FF45 /* DropdownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownPicker.swift; sourceTree = "<group>"; };
 		BDD06DA02E1BEFFC00B2FF45 /* TextOverflowingModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextOverflowingModifier.swift; sourceTree = "<group>"; };
-		BDD06DA22E1BFA1900B2FF45 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		BDD06DA42E1BFB4D00B2FF45 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
 		BDD06DA62E1BFD8900B2FF45 /* ZoomableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomableScrollView.swift; sourceTree = "<group>"; };
 		BDDE180E2E1D6CA60006EBE9 /* View+PresentationDetents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+PresentationDetents.swift"; sourceTree = "<group>"; };
@@ -182,7 +178,6 @@
 				BDDE18142E1DAB440006EBE9 /* View+Snapshot.swift */,
 				BDDE180E2E1D6CA60006EBE9 /* View+PresentationDetents.swift */,
 				BDD06DA42E1BFB4D00B2FF45 /* Text.swift */,
-				BDD06DA22E1BFA1900B2FF45 /* Collection.swift */,
 				50831E5F2545CEF400DC7EF6 /* Binding.swift */,
 				50831EAF2545DF5700DC7EF6 /* Binding+Observing.swift */,
 				50831EB92545DFC200DC7EF6 /* Button.swift */,
@@ -193,7 +188,6 @@
 				8278330E26FB51420008252A /* DispatchQueue.swift */,
 				8278330A26FB50F70008252A /* UIDevice.swift */,
 				8278334B26FCCD630008252A /* Text+NSAttributedString.swift */,
-				50831EF12545E21400DC7EF6 /* String.swift */,
 				50831E6D2545D11C00DC7EF6 /* UIApplication.swift */,
 				50831E592545CE3C00DC7EF6 /* View.swift */,
 				50831ED32545E09A00DC7EF6 /* View+Embed.swift */,
@@ -393,10 +387,8 @@
 				50831EEC2545E16600DC7EF6 /* Alerts.swift in Sources */,
 				8278330D26FB51340008252A /* EdgeInsets.swift in Sources */,
 				BDDE18132E1DAA1C0006EBE9 /* KeyboardPaddingModifier.swift in Sources */,
-				50831EF22545E21400DC7EF6 /* String.swift in Sources */,
 				8278331C26FB784F0008252A /* MailView.swift in Sources */,
 				50831E8A2545D35900DC7EF6 /* RoundedCorner.swift in Sources */,
-				BDD06DA32E1BFA1C00B2FF45 /* Collection.swift in Sources */,
 				BDDE18262E1E6EFA0006EBE9 /* HorizontalSliderStile.swift in Sources */,
 				BDDE181F2E1E6D4E0006EBE9 /* UIScrollViewWrapper.swift in Sources */,
 				50831E542545CCB000DC7EF6 /* Common.swift in Sources */,

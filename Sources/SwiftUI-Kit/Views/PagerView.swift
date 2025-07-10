@@ -42,7 +42,7 @@ public struct PagerView<Page: View>: View {
     public var body: some View {
         if #available(iOS 14, *) {
             TabView(selection: $pageSelection) {
-                ForEach(0..<pages.count) { index in
+                ForEach(0..<pages.count, id: \.self) { index in
                     pages[index]
                 }
             }

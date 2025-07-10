@@ -95,7 +95,7 @@ struct AlwaysPopoverModifier<PopoverContent>: ViewModifier where PopoverContent:
 }
 
 /// A `UIHostingController` subclass that hosts SwiftUI content inside a UIKit popover.
-class ContentViewController<V>: UIHostingController<V>, UIPopoverPresentationControllerDelegate where V:View {
+final class ContentViewController<V>: UIHostingController<V>, UIPopoverPresentationControllerDelegate where V:View {
     /// A binding to track popover visibility state.
     var isPresented: Binding<Bool>
 

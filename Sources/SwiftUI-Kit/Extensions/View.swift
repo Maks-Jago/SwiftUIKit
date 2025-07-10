@@ -410,6 +410,18 @@ public extension View {
             }
         )
     }
+
+    /// Reads the initial size of the view and assigns it to the provided binding.
+    /// - Parameter size: A binding to store the view’s initial size (only on first appearance).
+    /// - Returns: A view that captures its size using `GeometryReader` and sets it once on appear.
+    func readInitial(_ size: Binding<CGSize>) -> some View {
+        background(
+            GeometryReader { geometry in
+                Color.white.opacity(0.000001)
+                    .onAppear { size.wrappedValue = geometry.size }
+            }
+        )
+    }
 }
 
 public struct OffsetPreferenceKey: PreferenceKey {
