@@ -41,11 +41,6 @@ import SwiftUI
 ///   - builder: A closure that defines the view for each page.
 @available(iOS 17.0, *)
 public struct SwiftUIPagerView<TModel: Hashable, TView: View>: View {
-    // Tracks if the list has new pages loaded
-    @State private var hasNewPages: Bool = false
-
-    @State private var currentIndex: Int = 0
-
     private let pages: [TModel]
     private let axis: Axis.Set
     @Binding private var currentItem: TModel
@@ -75,12 +70,11 @@ public struct SwiftUIPagerView<TModel: Hashable, TView: View>: View {
 
     public var body: some View {
         GeometryReader { geometry in
-            // Vertical scroll view that supports paging
             ScrollView(axis, showsIndicators: false) {
                 pagesView(geometry: geometry)
                     .scrollTargetLayout() // Optimizes the layout for smooth scrolling
             }
-            .scrollDisabled(!isScrollEnabled) // Disables scrolling in iOS 17+
+            .scrollDisabled(!isScrollEnabled)
             .ignoresSafeArea() // The scroll view extends to the edges of the screen
             .scrollTargetBehavior(.paging) // Enables paging behavior, so the user scrolls page by page
             // Binding the scroll position to the current item, so when the currentItem changes, the scroll view updates its position
@@ -97,6 +91,11 @@ public struct SwiftUIPagerView<TModel: Hashable, TView: View>: View {
                     }
                 )
             )
+            .onPreferenceChange(VisiblePagePreferenceKey.self) { newValue in
+                if let newPage = newValue as? TModel, newPage != currentItem {
+                    currentItem = newPage
+                }
+            }
         }
     }
 
@@ -109,6 +108,15 @@ public struct SwiftUIPagerView<TModel: Hashable, TView: View>: View {
                     // Build each page using the provided builder
                     self.builder(page)
                         .id(page) // Assigns a unique ID to each page for scrolling and layout purposes
+                        .background(
+                            GeometryReader { geo in
+                                Color.white.opacity(0.001)
+                                    .preference(
+                                        key: VisiblePagePreferenceKey.self,
+                                        value: computeVisibility(geometry: geo, page: page, container: geometry).map(AnyHashable.init)
+                                    )
+                            }
+                        )
                         .ignoresSafeArea() // Ensures the content extends to the edges of the screen
                         .frame(minWidth: geometry.size.width) // Set the width of each page
                 }
@@ -121,6 +129,15 @@ public struct SwiftUIPagerView<TModel: Hashable, TView: View>: View {
                     // Build each page using the provided builder
                     self.builder(page)
                         .id(page) // Assigns a unique ID to each page for scrolling and layout purposes
+                        .background(
+                            GeometryReader { geo in
+                                Color.white.opacity(0.001)
+                                    .preference(
+                                        key: VisiblePagePreferenceKey.self,
+                                        value: computeVisibility(geometry: geo, page: page, container: geometry).map(AnyHashable.init)
+                                    )
+                            }
+                        )
                         .ignoresSafeArea() // Ensures the content extends to the edges of the screen
                         .frame(minHeight: geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets
                             .bottom
@@ -128,6 +145,27 @@ public struct SwiftUIPagerView<TModel: Hashable, TView: View>: View {
                 }
             }
             .frame(width: geometry.size.width) // Set the width of the scrollable area to match the screen width
+        }
+    }
+
+    private func computeVisibility(geometry: GeometryProxy, page: TModel, container: GeometryProxy) -> TModel? {
+        let frame = geometry.frame(in: .global)
+        let containerMid: CGFloat = axis == .horizontal
+            ? container.frame(in: .global).midX
+            : container.frame(in: .global).midY
+        let pageMid: CGFloat = axis == .horizontal ? frame.midX : frame.midY
+        let threshold: CGFloat = axis == .horizontal ? frame.width / 2 : frame.height / 2
+        let isCentered = abs(pageMid - containerMid) < threshold
+        return isCentered ? page : nil
+    }
+}
+
+private struct VisiblePagePreferenceKey: PreferenceKey {
+    static var defaultValue: AnyHashable?
+
+    static func reduce(value: inout AnyHashable?, nextValue: () -> AnyHashable?) {
+        if let next = nextValue() {
+            value = next
         }
     }
 }
