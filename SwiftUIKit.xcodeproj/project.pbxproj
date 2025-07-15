@@ -68,7 +68,6 @@
 		BDDE18172E1DACDD0006EBE9 /* PDFViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE18162E1DACD90006EBE9 /* PDFViewer.swift */; };
 		BDDE181B2E1E6C390006EBE9 /* ChipsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE181A2E1E6C330006EBE9 /* ChipsStack.swift */; };
 		BDDE181D2E1E6CFE0006EBE9 /* SwiftUIPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE181C2E1E6CFB0006EBE9 /* SwiftUIPagerView.swift */; };
-		BDDE181F2E1E6D4E0006EBE9 /* UIScrollViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE181E2E1E6D420006EBE9 /* UIScrollViewWrapper.swift */; };
 		BDDE18212E1E6DB20006EBE9 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE18202E1E6DB00006EBE9 /* WebView.swift */; };
 		BDDE18242E1E6EC40006EBE9 /* HorizontalValueSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE18232E1E6EB70006EBE9 /* HorizontalValueSlider.swift */; };
 		BDDE18262E1E6EFA0006EBE9 /* HorizontalSliderStile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE18252E1E6EF60006EBE9 /* HorizontalSliderStile.swift */; };
@@ -143,7 +142,6 @@
 		BDDE18162E1DACD90006EBE9 /* PDFViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewer.swift; sourceTree = "<group>"; };
 		BDDE181A2E1E6C330006EBE9 /* ChipsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChipsStack.swift; sourceTree = "<group>"; };
 		BDDE181C2E1E6CFB0006EBE9 /* SwiftUIPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPagerView.swift; sourceTree = "<group>"; };
-		BDDE181E2E1E6D420006EBE9 /* UIScrollViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewWrapper.swift; sourceTree = "<group>"; };
 		BDDE18202E1E6DB00006EBE9 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		BDDE18232E1E6EB70006EBE9 /* HorizontalValueSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalValueSlider.swift; sourceTree = "<group>"; };
 		BDDE18252E1E6EF60006EBE9 /* HorizontalSliderStile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSliderStile.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 			children = (
 				BDDE18222E1E6EAE0006EBE9 /* HorizontalSlider */,
 				BDDE18202E1E6DB00006EBE9 /* WebView.swift */,
-				BDDE181E2E1E6D420006EBE9 /* UIScrollViewWrapper.swift */,
 				BDDE181C2E1E6CFB0006EBE9 /* SwiftUIPagerView.swift */,
 				BDDE181A2E1E6C330006EBE9 /* ChipsStack.swift */,
 				BDDE18162E1DACD90006EBE9 /* PDFViewer.swift */,
@@ -402,7 +399,6 @@
 				50831E8A2545D35900DC7EF6 /* RoundedCorner.swift in Sources */,
 				BDDCFDB62E200951000CB717 /* String.swift in Sources */,
 				BDDE18262E1E6EFA0006EBE9 /* HorizontalSliderStile.swift in Sources */,
-				BDDE181F2E1E6D4E0006EBE9 /* UIScrollViewWrapper.swift in Sources */,
 				50831E542545CCB000DC7EF6 /* Common.swift in Sources */,
 				BDDE180F2E1D6CAC0006EBE9 /* View+PresentationDetents.swift in Sources */,
 				BDDE18212E1E6DB20006EBE9 /* WebView.swift in Sources */,
