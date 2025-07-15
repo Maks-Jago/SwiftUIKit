@@ -22,7 +22,7 @@ public struct ValueSlider: View {
     }
 }
 
-extension ValueSlider {
+public extension ValueSlider {
     init(_ configuration: ValueSliderStyleConfiguration) {
         self.configuration = configuration
     }
