@@ -34,7 +34,7 @@ public struct TextOverflowingModifier: ViewModifier {
     /// - Parameters:
     ///   - text: The text string to test for overflow.
     ///   - font: The font used for rendering the text.
-    ///   - completion: A closure that receives a boolean indicating overflow state.
+    ///   - completion: A closure that receives a boolean indicating overflow state. If the `Text` fits, it triggers the `completion` handler with `false`, otherwise with `true`
     public init(text: String, font: Font, completion: @escaping (Bool) -> Void) {
         self.text = text
         self.font = font

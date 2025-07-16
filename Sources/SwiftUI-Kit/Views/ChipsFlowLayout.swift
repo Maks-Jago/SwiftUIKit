@@ -1,5 +1,5 @@
 //
-//  ChipsStack.swift
+//  ChipsFlowLayout.swift
 //  SwiftUIKit
 //
 //  Created by Vlad Andrieiev on 09.07.2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// `ChipsStack` is a custom layout that arranges its subviews in a horizontal flow, similar to how chips are displayed in a tag cloud. The
+/// `ChipsFlowLayout` is a custom layout that arranges its subviews in a horizontal flow, similar to how chips are displayed in a tag cloud. The
 /// layout automatically moves subviews to the next row if they exceed the available width.
 ///
 /// Example usage:
@@ -16,7 +16,7 @@ import SwiftUI
 ///     let items = ["Swift", "UI", "Layout", "Flow", "Tag", "Chips"]
 ///
 ///     var body: some View {
-///         ChipsStack(spacing: 8) {
+///         ChipsFlowLayout(spacing: 8) {
 ///             ForEach(items, id: \.self) { item in
 ///                 Text(item)
 ///                     .padding(.horizontal, 12)
@@ -32,10 +32,10 @@ import SwiftUI
 /// - Parameters:
 ///   - spacing: The space between each chip. Defaults to 8.
 @available(iOS 16.0, *)
-public struct ChipsStack: Layout {
+public struct ChipsFlowLayout: Layout {
     private let spacing: CGFloat
 
-    /// Initializes a `ChipsStack` layout with optional spacing between chips.
+    /// Initializes a `ChipsFlowLayout` layout with optional spacing between chips.
     /// - Parameter spacing: The space between each chip. Defaults to 8.
     public init(spacing: CGFloat = 8) {
         self.spacing = spacing

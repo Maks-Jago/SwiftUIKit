@@ -1,5 +1,5 @@
 //
-//  AlwaysPopover.swift
+//  TooltipPopover.swift
 //  SwiftUIKit
 //
 //  Created by Vlad Andrieiev on 08.07.2025.
@@ -13,8 +13,8 @@ public extension View {
     ///   - isPresented: A binding that controls whether the popover is visible.
     ///   - content: A view builder that provides the content of the popover.
     /// - Returns: A modified view with the custom popover attached.
-    func alwaysPopover<Content>(isPresented: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View {
-        self.modifier(AlwaysPopoverModifier(isPresented: isPresented, contentBlock: content))
+    func tooltipPopover<Content>(isPresented: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) -> some View where Content : View {
+        self.modifier(TooltipPopoverModifier(isPresented: isPresented, contentBlock: content))
     }
 }
 
@@ -35,7 +35,7 @@ public extension UIView {
 }
 
 /// A custom `ViewModifier` that presents a UIKit-based popover using a manually inserted anchor view.
-struct AlwaysPopoverModifier<PopoverContent>: ViewModifier where PopoverContent: View {
+struct TooltipPopoverModifier<PopoverContent>: ViewModifier where PopoverContent: View {
     let isPresented: Binding<Bool>
     let contentBlock: () -> PopoverContent
 

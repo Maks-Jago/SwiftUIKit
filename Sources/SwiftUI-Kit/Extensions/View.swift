@@ -306,11 +306,13 @@ public extension View {
     ///
     /// - Parameters:
     ///   - item: A `Binding` to an optional item that controls the visibility of the popup. When the item is non-nil, the popup is shown.
+    ///   - animation: The animation used when presenting or dismissing the popup. Defaults to `.easeInOut(duration: 0.2)`.
     ///   - builder: A closure that takes the unwrapped item and a dismiss action, returning the popup content as a `View`.
     /// - Returns: A modified `View` that conditionally presents a popup overlay when the bound item is non-nil.
     @available(iOS 15.0, *)
     func popupOverlay<Item: Equatable>(
         item: Binding<Item?>,
+        animation: Animation = .easeInOut(duration: 0.2),
         builder: @escaping (Item, @escaping () -> Void) -> some View
     ) -> some View {
         overlay {
@@ -320,14 +322,14 @@ public extension View {
                         .ignoresSafeArea()
                         .onTapGesture {
                             // Dismiss the overlay by setting the item to nil
-                            withAnimation(.easeInOut(duration: 0.2)) {
+                            withAnimation(animation) {
                                 item.wrappedValue = nil
                             }
                         }
 
                     // Pass the dismiss function to the builder
                     builder(unwrappedItem) {
-                        withAnimation(.easeInOut(duration: 0.2)) {
+                        withAnimation(animation) {
                             item.wrappedValue = nil
                         }
                     }
