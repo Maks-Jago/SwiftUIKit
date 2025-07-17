@@ -19,6 +19,7 @@ public extension View {
     ///   - radius: The radius of the corner rounding.
     ///   - corners: The corners to apply the rounding to. Default is `.allCorners`.
     /// - Returns: A view with the specified corners rounded.
+    @available(*, deprecated, message: "Use .cornerRadius(backgroundColor:cornerRadii:) instead.")
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
         clipShape(RoundedCorner(radius: radius, corners: corners))
     }
@@ -48,3 +49,10 @@ public struct RoundedCorner: Shape {
     }
 }
 #endif
+
+public extension View {
+    @available(iOS 16.0, *)
+    func cornerRadius(backgroundColor: Color, cornerRadii: RectangleCornerRadii) -> some View {
+        background(backgroundColor, in: .rect(cornerRadii: cornerRadii))
+    }
+}

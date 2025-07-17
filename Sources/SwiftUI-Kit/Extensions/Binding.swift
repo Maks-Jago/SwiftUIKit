@@ -89,3 +89,22 @@ public extension Binding {
         )
     }
 }
+
+public extension Binding where Value == String {
+
+    /// Limits the length of the string bound value to a specified number of characters.
+    /// - Parameter length: The maximum number of characters allowed. If `nil`, no limit is applied.
+    /// - Returns: The same `Binding<String>` instance with the applied length limitation logic.
+    func limit(_ length: Int?) -> Self {
+        guard let length else {
+            return self
+        }
+
+        if wrappedValue.count > length {
+            DispatchQueue.main.async {
+                wrappedValue = String(wrappedValue.prefix(length))
+            }
+        }
+        return self
+    }
+}

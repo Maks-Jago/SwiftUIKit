@@ -296,3 +296,182 @@ public extension View {
         frame(width: size.width, height: size.height, alignment: alignment)
     }
 }
+
+// MARK: - Popup Overlay
+public extension View {
+    /// Presents a popup overlay based on a bound optional item. When the item is non-nil, a customizable popup view is shown.
+    ///
+    /// This method uses an overlay with a semi-transparent background and displays a view constructed by the provided `builder`
+    /// closure. The popup supports animated presentation and dismissal, including tapping outside to dismiss.
+    ///
+    /// - Parameters:
+    ///   - item: A `Binding` to an optional item that controls the visibility of the popup. When the item is non-nil, the popup is shown.
+    ///   - animation: The animation used when presenting or dismissing the popup. Defaults to `.easeInOut(duration: 0.2)`.
+    ///   - builder: A closure that takes the unwrapped item and a dismiss action, returning the popup content as a `View`.
+    /// - Returns: A modified `View` that conditionally presents a popup overlay when the bound item is non-nil.
+    @available(iOS 15.0, *)
+    func popupOverlay<Item: Equatable>(
+        item: Binding<Item?>,
+        animation: Animation = .easeInOut(duration: 0.2),
+        builder: @escaping (Item, @escaping () -> Void) -> some View
+    ) -> some View {
+        overlay {
+            ZStack {
+                if let unwrappedItem = item.wrappedValue {
+                    Color.black.opacity(0.4)
+                        .ignoresSafeArea()
+                        .onTapGesture {
+                            // Dismiss the overlay by setting the item to nil
+                            withAnimation(animation) {
+                                item.wrappedValue = nil
+                            }
+                        }
+
+                    // Pass the dismiss function to the builder
+                    builder(unwrappedItem) {
+                        withAnimation(animation) {
+                            item.wrappedValue = nil
+                        }
+                    }
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                }
+            }
+            .ignoresSafeArea()
+            .animation(.spring(response: 0.35, dampingFraction: 0.75), value: item.wrappedValue)
+        }
+    }
+}
+
+// MARK: Read & Offset
+public extension View {
+    /// Reads the position of a view within a specified coordinate space and updates the provided binding with the calculated position.
+    /// - Parameters:
+    ///   - position: A binding to a `CGPoint` that will be updated with the view's position.
+    ///   - coordinateSpace: The `CoordinateSpace` in which the view's position should be measured.
+    /// - Returns: A view that reads its position and updates the binding accordingly.
+    @available(iOS 15.0, *)
+    func read(_ position: Binding<CGPoint>, in coordinateSpace: CoordinateSpace) -> some View {
+        background {
+            GeometryReader { geometry in
+                // Using a nearly invisible background to trigger the GeometryReader
+                Color.white.opacity(0.000001)
+                    .preference(key: RectPreferenceKey.self, value: geometry.frame(in: coordinateSpace))
+                    .onPreferenceChange(RectPreferenceKey.self) { frame in
+                        withAnimation {
+                            position.wrappedValue = .init(x: frame.midX, y: frame.midY)
+                        }
+                    }
+            }
+        }
+    }
+
+    /// Tracks the offset of the current view within the specified coordinate space.
+    ///
+    /// This method adds an overlay using `GeometryReader` to compute the `minY` offset of the view within the given coordinate space. The
+    /// offset value is then passed to the provided completion handler.
+    ///
+    /// - Parameters:
+    ///   - coordinateSpace: The `CoordinateSpace` in which the view's position is to be measured.
+    ///   - completion: A closure that receives the computed `minY` offset value.
+    /// - Returns: A modified `View` that provides the offset value of its position within the specified coordinate space.
+    @available(iOS 15.0, *)
+    func offset(
+        coordinateSpace: CoordinateSpace,
+        completion: @escaping (CGFloat) -> Void
+    ) -> some View {
+        overlay {
+            GeometryReader { proxy in
+                let minY = proxy.frame(in: coordinateSpace).minY
+                Color.clear
+                    .preference(key: OffsetPreferenceKey.self, value: minY)
+                    .onPreferenceChange(OffsetPreferenceKey.self) { value in
+                        completion(value)
+                    }
+            }
+        }
+    }
+
+    /// Reads the size of a view and updates the provided binding with the calculated size.
+    ///
+    /// This method uses a `GeometryReader` placed in the background to measure the view’s size.
+    /// The size is then passed to the specified `Binding<CGSize>`, allowing external state to react
+    /// to layout changes or dynamic sizing.
+    ///
+    /// - Parameter size: A binding to a `CGSize` that will be updated with the view's current size.
+    /// - Returns: A view that measures its own size and updates the binding accordingly.
+    func read(_ size: Binding<CGSize>) -> some View {
+        background(
+            GeometryReader { geometry in
+                Color.white.opacity(0.000001)
+                    .preference(key: SizePreferenceKey.self, value: geometry.size)
+                    .onPreferenceChange(SizePreferenceKey.self) { newSize in
+                        withAnimation {
+                            size.wrappedValue = newSize
+                        }
+                    }
+            }
+        )
+    }
+
+    /// Reads the initial size of the view and assigns it to the provided binding.
+    /// - Parameter size: A binding to store the view’s initial size (only on first appearance).
+    /// - Returns: A view that captures its size using `GeometryReader` and sets it once on appear.
+    func readInitial(_ size: Binding<CGSize>) -> some View {
+        background(
+            GeometryReader { geometry in
+                Color.white.opacity(0.000001)
+                    .onAppear { size.wrappedValue = geometry.size }
+            }
+        )
+    }
+}
+
+public struct OffsetPreferenceKey: PreferenceKey {
+    public static var defaultValue: CGFloat = .zero
+
+    public static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+
+public struct RectPreferenceKey: PreferenceKey {
+    public static var defaultValue: CGRect = .zero
+
+    /// A function that updates the preference value with the next value.
+    public static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = nextValue()
+    }
+}
+
+public struct SizePreferenceKey: PreferenceKey {
+    public static var defaultValue: CGSize = .zero
+
+    /// A function that updates the preference value with the next value.
+    public static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
+        value = nextValue()
+    }
+}
+
+// MARK: Background Rounded Rectangle
+public extension View {
+    /// Wraps the current view with padding, a background color, and rounded corners.
+        ///
+        /// This modifier adds padding around the content, applies a background color,
+        /// and clips the result with a `RoundedRectangle` to achieve a card-like appearance.
+        ///
+        /// - Parameters:
+        ///   - backgroundColor: The background color to apply. Default is `.white`.
+        ///   - cornerRadius: The radius of the rounded corners. Default is `24`.
+        ///   - paddingInsets: The padding to apply around the content. Default is `16` points on all sides.
+        ///
+        /// - Returns: A view with padding, background color, and rounded corners.
+    func backgroundRoundedRectangle(
+        backgroundColor: Color = .white,
+        cornerRadius: CGFloat = 24,
+        paddingInsets: EdgeInsets = .init(top: 16, leading: 16, bottom: 16, trailing: 16)
+    ) -> some View {
+        padding(paddingInsets)
+            .background(backgroundColor)
+            .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+    }
+}
