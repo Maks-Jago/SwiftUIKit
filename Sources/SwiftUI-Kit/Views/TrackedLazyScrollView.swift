@@ -53,7 +53,7 @@ public struct TrackableItemView<Content: View>: View {
 
 // MARK: - Generic public VisibilityTracker
 @available(iOS 17.0, *)
-public struct TrackedLazyScrollView2<Item: Identifiable, Content: View, Header: View>: View
+public struct TrackedLazyScrollView<Item: Identifiable, Content: View, Header: View>: View
 where Item.ID: LosslessStringConvertible & Hashable {
 
     public let items: [Item]
