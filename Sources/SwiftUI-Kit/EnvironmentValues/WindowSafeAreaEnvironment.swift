@@ -21,7 +21,6 @@ private struct WindowSafeAreaInsetsKey: EnvironmentKey {
 
 public extension EnvironmentValues {
     /// An environment value to access the window's safe area insets.
-    @available(iOS, deprecated: 26.2, message: "Use provideSafeAreaInsets in compination with environment value contentSafeAreaInsets instead")
     var windowSafeAreaInsets: EdgeInsets {
         self[WindowSafeAreaInsetsKey.self]
     }
