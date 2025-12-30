@@ -73,6 +73,10 @@
 		BDDE18262E1E6EFA0006EBE9 /* HorizontalSliderStile.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE18252E1E6EF60006EBE9 /* HorizontalSliderStile.swift */; };
 		BDDE18282E1E6F780006EBE9 /* ConditionalBlur.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE18272E1E6F730006EBE9 /* ConditionalBlur.swift */; };
 		BDDE182A2E1E6F8F0006EBE9 /* KeyboardVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE18292E1E6F8B0006EBE9 /* KeyboardVisibility.swift */; };
+		EE37A9F62EF5AAF9005E1346 /* WindowSafeAreaEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE37A9F42EF5AAF9005E1346 /* WindowSafeAreaEnvironment.swift */; };
+		EE37A9F82EF5AB3B005E1346 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE37A9F72EF5AB3B005E1346 /* UIEdgeInsets.swift */; };
+		EE37A9FC2EF5AB80005E1346 /* SafeAreaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE37A9FB2EF5AB68005E1346 /* SafeAreaProvider.swift */; };
+		EE37A9FE2EF5ABE0005E1346 /* ContentSafeAreaEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE37A9FD2EF5ABD5005E1346 /* ContentSafeAreaEnvironment.swift */; };
 		OBJ_30 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_44 /* SwiftUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "SwiftUIKit::SwiftUIKit::Product" /* SwiftUIKit.framework */; };
 /* End PBXBuildFile section */
@@ -147,6 +151,10 @@
 		BDDE18252E1E6EF60006EBE9 /* HorizontalSliderStile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSliderStile.swift; sourceTree = "<group>"; };
 		BDDE18272E1E6F730006EBE9 /* ConditionalBlur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalBlur.swift; sourceTree = "<group>"; };
 		BDDE18292E1E6F8B0006EBE9 /* KeyboardVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardVisibility.swift; sourceTree = "<group>"; };
+		EE37A9F42EF5AAF9005E1346 /* WindowSafeAreaEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSafeAreaEnvironment.swift; sourceTree = "<group>"; };
+		EE37A9F72EF5AB3B005E1346 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
+		EE37A9FB2EF5AB68005E1346 /* SafeAreaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaProvider.swift; sourceTree = "<group>"; };
+		EE37A9FD2EF5ABD5005E1346 /* ContentSafeAreaEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSafeAreaEnvironment.swift; sourceTree = "<group>"; };
 		OBJ_17 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		"SwiftUIKit::SwiftUIKit::Product" /* SwiftUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SwiftUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +198,7 @@
 				8278330A26FB50F70008252A /* UIDevice.swift */,
 				8278334B26FCCD630008252A /* Text+NSAttributedString.swift */,
 				50831E6D2545D11C00DC7EF6 /* UIApplication.swift */,
+				EE37A9F72EF5AB3B005E1346 /* UIEdgeInsets.swift */,
 				50831E592545CE3C00DC7EF6 /* View.swift */,
 				50831ED32545E09A00DC7EF6 /* View+Embed.swift */,
 				50EAE866257F6BFD0058F5A0 /* NavigationLink.swift */,
@@ -211,6 +220,7 @@
 		50831E732545D15F00DC7EF6 /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
+				EE37A9FB2EF5AB68005E1346 /* SafeAreaProvider.swift */,
 				BDDE18292E1E6F8B0006EBE9 /* KeyboardVisibility.swift */,
 				BDDE18272E1E6F730006EBE9 /* ConditionalBlur.swift */,
 				BDDE18122E1DAA150006EBE9 /* KeyboardPaddingModifier.swift */,
@@ -268,6 +278,15 @@
 			path = HorizontalSlider;
 			sourceTree = "<group>";
 		};
+		EE37A9F52EF5AAF9005E1346 /* EnvironmentValues */ = {
+			isa = PBXGroup;
+			children = (
+				EE37A9FD2EF5ABD5005E1346 /* ContentSafeAreaEnvironment.swift */,
+				EE37A9F42EF5AAF9005E1346 /* WindowSafeAreaEnvironment.swift */,
+			);
+			path = EnvironmentValues;
+			sourceTree = "<group>";
+		};
 		OBJ_14 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +317,7 @@
 		OBJ_8 /* SwiftUI-Kit */ = {
 			isa = PBXGroup;
 			children = (
+				EE37A9F52EF5AAF9005E1346 /* EnvironmentValues */,
 				50831E4E2545CC1E00DC7EF6 /* Common */,
 				50831E4D2545CBB400DC7EF6 /* Extensions */,
 				50831E732545D15F00DC7EF6 /* ViewModifiers */,
@@ -399,9 +419,13 @@
 				50831E8A2545D35900DC7EF6 /* RoundedCorner.swift in Sources */,
 				BDDCFDB62E200951000CB717 /* String.swift in Sources */,
 				BDDE18262E1E6EFA0006EBE9 /* HorizontalSliderStile.swift in Sources */,
+				EE37A9F82EF5AB3B005E1346 /* UIEdgeInsets.swift in Sources */,
 				50831E542545CCB000DC7EF6 /* Common.swift in Sources */,
 				BDDE180F2E1D6CAC0006EBE9 /* View+PresentationDetents.swift in Sources */,
+				EE37A9F62EF5AAF9005E1346 /* WindowSafeAreaEnvironment.swift in Sources */,
+				EE37A9FC2EF5AB80005E1346 /* SafeAreaProvider.swift in Sources */,
 				BDDE18212E1E6DB20006EBE9 /* WebView.swift in Sources */,
+				EE37A9FE2EF5ABE0005E1346 /* ContentSafeAreaEnvironment.swift in Sources */,
 				BDDE181B2E1E6C390006EBE9 /* ChipsFlowLayout.swift in Sources */,
 				50831E802545D2B700DC7EF6 /* IfLetViewPlaceholder.swift in Sources */,
 				8278330B26FB50F70008252A /* UIDevice.swift in Sources */,

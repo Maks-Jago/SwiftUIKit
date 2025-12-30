@@ -475,3 +475,16 @@ public extension View {
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
     }
 }
+
+public extension View {
+  /// Occupies the view’s layout space in order to read and propagate
+  /// the view’s safe area insets into the environment.
+  ///
+  /// This modifier is intended to be applied once, typically on a root view,
+  /// to capture the current safe area insets. The propagated values can then
+  /// be accessed elsewhere in the view hierarchy via
+  /// `@Environment(\.contentSafeAreaInsets)`
+  func provideSafeAreaInsets() -> some View {
+    SafeAreaProvider { self }
+  }
+}
