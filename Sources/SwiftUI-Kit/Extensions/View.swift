@@ -342,48 +342,7 @@ public extension View {
     }
 }
 
-// MARK: Offset
-public extension View {
-    /// Tracks the offset of the current view within the specified coordinate space.
-    ///
-    /// This method adds an overlay using `GeometryReader` to compute the `minY` offset of the view within the given coordinate space. The
-    /// offset value is then passed to the provided completion handler.
-    ///
-    /// - Parameters:
-    ///   - coordinateSpace: The `CoordinateSpace` in which the view's position is to be measured.
-    ///   - completion: A closure that receives the computed `minY` offset value.
-    /// - Returns: A modified `View` that provides the offset value of its position within the specified coordinate space.
-    @available(iOS 15.0, *)
-    func offset(
-        coordinateSpace: CoordinateSpace,
-        completion: @escaping (CGFloat) -> Void
-    ) -> some View {
-        overlay {
-            GeometryReader { proxy in
-                let minY = proxy.frame(in: coordinateSpace).minY
-                Color.clear
-                    .preference(key: OffsetPreferenceKey.self, value: minY)
-                    .onPreferenceChange(OffsetPreferenceKey.self) { value in
-                        completion(value)
-                    }
-            }
-        }
-    }
-
-    /// Reads the initial size of the view and assigns it to the provided binding.
-    /// - Parameter size: A binding to store the view’s initial size (only on first appearance).
-    /// - Returns: A view that captures its size using `GeometryReader` and sets it once on appear.
-    func readInitial(_ size: Binding<CGSize>) -> some View {
-        background(
-            GeometryReader { geometry in
-                Color.white.opacity(0.000001)
-                    .onAppear { size.wrappedValue = geometry.size }
-            }
-        )
-    }
-}
-
-// MARK: Read
+// MARK: Read & Offset
 extension View {
     /// Reads the center point of the view and binds it to a `CGPoint`.
     ///
@@ -419,6 +378,29 @@ extension View {
         read(in: coordinateSpace, animation: animation) { newValue in
             rect.wrappedValue = newValue
         }
+    }
+    
+    /// Tracks the offset of the current view within the specified coordinate space.
+    ///
+    /// - Parameters:
+    ///   - coordinateSpace: The `CoordinateSpace` in which the view's position is to be measured.
+    ///   - completion: A closure that receives the computed `minY` offset value.
+    public func offset(coordinateSpace: CoordinateSpace, completion: @escaping (CGFloat) -> Void, animation: Animation? = nil) -> some View {
+        read(in: coordinateSpace, animation: animation) { newValue in
+            completion(newValue.minY)
+        }
+    }
+    
+    /// Reads the initial size of the view and assigns it to the provided binding.
+    /// - Parameter size: A binding to store the view’s initial size (only on first appearance).
+    /// - Returns: A view that captures its size using `GeometryReader` and sets it once on appear.
+    public func readInitial(_ size: Binding<CGSize>) -> some View {
+        background(
+            GeometryReader { geometry in
+                Color.white.opacity(0.000001)
+                    .onAppear { size.wrappedValue = geometry.size }
+            }
+        )
     }
     
     @ViewBuilder
@@ -463,6 +445,15 @@ public struct OffsetPreferenceKey: PreferenceKey {
     public static var defaultValue: CGFloat = .zero
 
     public static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+
+public struct SizePreferenceKey: PreferenceKey {
+    public static var defaultValue: CGSize = .zero
+
+    /// A function that updates the preference value with the next value.
+    public static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
         value = nextValue()
     }
 }
