@@ -356,10 +356,10 @@ extension View {
         }
     }
     
-    /// Reads the full frame of the view and binds it to a `CGRect`
+    /// Reads the size of the view and binds it to a `CGSize`.
     ///
     /// - Parameters:
-    ///   - rect: A binding to a `CGRect` that will be updated with the view's frame.
+    ///   - size: A binding to a `CGSize` that will be updated with the view's dimensions.
     ///   - coordinateSpace: The coordinate space in which to measure the position. Defaults to `.global`.
     ///   - animation: An optional animation to apply when the position changes. Defaults to `nil`.
     public func read(_ size: Binding<CGSize>, in coordinateSpace: CoordinateSpace = .global, animation: Animation? = nil) -> some View {
@@ -368,10 +368,10 @@ extension View {
         }
     }
     
-    /// Reads the size of the view and binds it to a `CGSize`.
+    /// Reads the full frame of the view and binds it to a `CGRect`
     ///
     /// - Parameters:
-    ///   - size: A binding to a `CGSize` that will be updated with the view's dimensions.
+    ///   - rect: A binding to a `CGRect` that will be updated with the view's frame.
     ///   - coordinateSpace: The coordinate space in which to measure the position. Defaults to `.global`.
     ///   - animation: An optional animation to apply when the position changes. Defaults to `nil`.
     public func read(_ rect: Binding<CGRect>, in coordinateSpace: CoordinateSpace = .global, animation: Animation? = nil) -> some View {
