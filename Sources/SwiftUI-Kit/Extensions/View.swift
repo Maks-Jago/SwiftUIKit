@@ -449,20 +449,20 @@ public struct OffsetPreferenceKey: PreferenceKey {
     }
 }
 
-public struct SizePreferenceKey: PreferenceKey {
-    public static var defaultValue: CGSize = .zero
-
-    /// A function that updates the preference value with the next value.
-    public static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
-        value = nextValue()
-    }
-}
-
 public struct RectPreferenceKey: PreferenceKey {
     public static var defaultValue: CGRect = .zero
 
     /// A function that updates the preference value with the next value.
     public static func reduce(value: inout CGRect, nextValue: () -> CGRect) {
+        value = nextValue()
+    }
+}
+
+public struct SizePreferenceKey: PreferenceKey {
+    public static var defaultValue: CGSize = .zero
+
+    /// A function that updates the preference value with the next value.
+    public static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
         value = nextValue()
     }
 }
