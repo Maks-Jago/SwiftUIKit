@@ -74,7 +74,7 @@ public struct MailView: UIViewControllerRepresentable {
         for attachment in attachments {
             vc.addAttachmentData(
                 attachment.data,
-                mimeType: attachment.mimeType,
+                mimeType: attachment.mimeType.rawValue,
                 fileName: attachment.fileName
             )
         }
@@ -89,13 +89,28 @@ public struct MailView: UIViewControllerRepresentable {
     /// and filename when adding attachments to a `MailView`.
     public struct Attachment {
         fileprivate let data: Data
-        fileprivate let mimeType: String
+        fileprivate let mimeType: MimeType
         fileprivate let fileName: String
 
-        public init(data: Data, mimeType: String, fileName: String) {
+        public init(data: Data, mimeType: MimeType, fileName: String) {
             self.data = data
             self.mimeType = mimeType
             self.fileName = fileName
+        }
+        
+        /// Supported MIME types for email attachments.
+        public enum MimeType: String {
+            case pdf = "application/pdf"
+            case csv = "text/csv"
+            case text = "text/plain"
+            case gif = "image/gif"
+            case jpeg = "image/jpeg"
+            case png = "image/png"
+            case imageWebp = "image/webp"
+            case mp4 = "video/mp4"
+            case mpeg = "video/mpeg"
+            case zip = "application/zip"
+            case octetStream = "application/octet-stream"
         }
     }
 }
