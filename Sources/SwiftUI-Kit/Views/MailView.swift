@@ -22,6 +22,7 @@ public struct MailView: UIViewControllerRepresentable {
     var recepients: [String]?
     var subject: String
     var body: String
+    var attachments: [Attachment] = []
     
     /// Creates a `MailView` to compose and send an email.
     /// - Parameters:
@@ -29,11 +30,13 @@ public struct MailView: UIViewControllerRepresentable {
     ///   - recepients: An optional list of recipient email addresses. Default is `nil`.
     ///   - subject: The subject of the email. Default is an empty string.
     ///   - body: The body text of the email. Default is an empty string.
-    public init(result: Binding<Result<Void, Error>?>, recepients: [String]? = nil, subject: String = "", body: String = "") {
+    ///   - attachments: Array of attachments to include in the email. Each attachment should provide the file data, MIME type, and filename
+    public init(result: Binding<Result<Void, Error>?>, recepients: [String]? = nil, subject: String = "", body: String = "", attachments: [Attachment] = []) {
         self._result = result
         self.recepients = recepients
         self.subject = subject
         self.body = body
+        self.attachments = attachments
     }
     
     public class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
@@ -68,10 +71,48 @@ public struct MailView: UIViewControllerRepresentable {
         vc.setToRecipients(recepients)
         vc.setSubject(subject)
         vc.setMessageBody(body, isHTML: false)
+        for attachment in attachments {
+            vc.addAttachmentData(
+                attachment.data,
+                mimeType: attachment.mimeType.rawValue,
+                fileName: attachment.fileName
+            )
+        }
         return vc
     }
     
     public func updateUIViewController(_ uiViewController: MFMailComposeViewController, context: Context) {}
+    
+    /// Represents a file attachment to include in an email message.
+    ///
+    /// Use this type to provide file data along with its corresponding MIME type
+    /// and filename when adding attachments to a `MailView`.
+    public struct Attachment {
+        fileprivate let data: Data
+        fileprivate let mimeType: MimeType
+        fileprivate let fileName: String
+
+        public init(data: Data, mimeType: MimeType, fileName: String) {
+            self.data = data
+            self.mimeType = mimeType
+            self.fileName = fileName
+        }
+        
+        /// Supported MIME types for email attachments.
+        public enum MimeType: String {
+            case pdf = "application/pdf"
+            case csv = "text/csv"
+            case text = "text/plain"
+            case gif = "image/gif"
+            case jpeg = "image/jpeg"
+            case png = "image/png"
+            case imageWebp = "image/webp"
+            case mp4 = "video/mp4"
+            case mpeg = "video/mpeg"
+            case zip = "application/zip"
+            case octetStream = "application/octet-stream"
+        }
+    }
 }
 
 #endif
