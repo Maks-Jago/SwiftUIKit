@@ -404,7 +404,7 @@ extension View {
     }
     
     @ViewBuilder
-    private func read(in coordinateSpace: CoordinateSpace, animation: Animation?, action: @escaping (CGRect) -> Void) -> some View {
+    private func read(in coordinateSpace: CoordinateSpace, animation: Animation? = nil, action: @escaping (CGRect) -> Void) -> some View {
         if #available(iOS 16.0, *) {
             readGeometry(in: coordinateSpace, animation: animation, action: action)
         } else {
@@ -414,7 +414,7 @@ extension View {
     
     
     @available(iOS 16.0, *)
-    private func readGeometry(in coordinateSpace: CoordinateSpace, animation: Animation?, action: @escaping (CGRect) -> Void) -> some View {
+    private func readGeometry(in coordinateSpace: CoordinateSpace, animation: Animation? = nil, action: @escaping (CGRect) -> Void) -> some View {
         onGeometryChange(for: CGRect.self) { proxy in
             proxy.frame(in: coordinateSpace)
         } action: { newValue in
@@ -424,7 +424,7 @@ extension View {
         }
     }
     
-    private func readLegacy(in coordinateSpace: CoordinateSpace, animation: Animation?, action: @escaping (CGRect) -> Void) -> some View {
+    private func readLegacy(in coordinateSpace: CoordinateSpace, animation: Animation? = nil, action: @escaping (CGRect) -> Void) -> some View {
         background(
             GeometryReader { geometry in
                 Color.white.opacity(0.000001)
