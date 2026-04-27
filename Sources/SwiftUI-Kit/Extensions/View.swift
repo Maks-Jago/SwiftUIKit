@@ -343,80 +343,58 @@ public extension View {
 }
 
 // MARK: Read & Offset
-public extension View {
-    /// Reads the position of a view within a specified coordinate space and updates the provided binding with the calculated position.
+extension View {
+    /// Reads the center point of the view and binds it to a `CGPoint`.
+    ///
     /// - Parameters:
-    ///   - position: A binding to a `CGPoint` that will be updated with the view's position.
-    ///   - coordinateSpace: The `CoordinateSpace` in which the view's position should be measured.
-    /// - Returns: A view that reads its position and updates the binding accordingly.
-    @available(iOS 15.0, *)
-    func read(_ position: Binding<CGPoint>, in coordinateSpace: CoordinateSpace) -> some View {
-        background {
-            GeometryReader { geometry in
-                // Using a nearly invisible background to trigger the GeometryReader
-                Color.white.opacity(0.000001)
-                    .preference(key: RectPreferenceKey.self, value: geometry.frame(in: coordinateSpace))
-                    .onPreferenceChange(RectPreferenceKey.self) { frame in
-                        withAnimation {
-                            position.wrappedValue = .init(x: frame.midX, y: frame.midY)
-                        }
-                    }
-            }
+    ///   - position: A binding to a `CGPoint` that will be updated with the view's center.
+    ///   - coordinateSpace: The coordinate space in which to measure the position. Defaults to `.global`.
+    ///   - animation: An optional animation to apply when the position changes. Defaults to `nil`.
+    public func read(_ position: Binding<CGPoint>, in coordinateSpace: CoordinateSpace = .global, animation: Animation? = nil) -> some View {
+        read(in: coordinateSpace, animation: animation) { rect in
+            position.wrappedValue = CGPoint(x: rect.midX, y: rect.midY)
         }
     }
-
-    /// Tracks the offset of the current view within the specified coordinate space.
+    
+    /// Reads the size of the view and binds it to a `CGSize`.
     ///
-    /// This method adds an overlay using `GeometryReader` to compute the `minY` offset of the view within the given coordinate space. The
-    /// offset value is then passed to the provided completion handler.
+    /// - Parameters:
+    ///   - size: A binding to a `CGSize` that will be updated with the view's dimensions.
+    ///   - coordinateSpace: The coordinate space in which to measure the position. Defaults to `.global`.
+    ///   - animation: An optional animation to apply when the position changes. Defaults to `nil`.
+    public func read(_ size: Binding<CGSize>, in coordinateSpace: CoordinateSpace = .global, animation: Animation? = nil) -> some View {
+        read(in: coordinateSpace, animation: animation) { rect in
+            size.wrappedValue = rect.size
+        }
+    }
+    
+    /// Reads the full frame of the view and binds it to a `CGRect`
+    ///
+    /// - Parameters:
+    ///   - rect: A binding to a `CGRect` that will be updated with the view's frame.
+    ///   - coordinateSpace: The coordinate space in which to measure the position. Defaults to `.global`.
+    ///   - animation: An optional animation to apply when the position changes. Defaults to `nil`.
+    public func read(_ rect: Binding<CGRect>, in coordinateSpace: CoordinateSpace = .global, animation: Animation? = nil) -> some View {
+        read(in: coordinateSpace, animation: animation) { newValue in
+            rect.wrappedValue = newValue
+        }
+    }
+    
+    /// Tracks the offset of the current view within the specified coordinate space.
     ///
     /// - Parameters:
     ///   - coordinateSpace: The `CoordinateSpace` in which the view's position is to be measured.
     ///   - completion: A closure that receives the computed `minY` offset value.
-    /// - Returns: A modified `View` that provides the offset value of its position within the specified coordinate space.
-    @available(iOS 15.0, *)
-    func offset(
-        coordinateSpace: CoordinateSpace,
-        completion: @escaping (CGFloat) -> Void
-    ) -> some View {
-        overlay {
-            GeometryReader { proxy in
-                let minY = proxy.frame(in: coordinateSpace).minY
-                Color.clear
-                    .preference(key: OffsetPreferenceKey.self, value: minY)
-                    .onPreferenceChange(OffsetPreferenceKey.self) { value in
-                        completion(value)
-                    }
-            }
+    public func offset(coordinateSpace: CoordinateSpace, completion: @escaping (CGFloat) -> Void, animation: Animation? = nil) -> some View {
+        read(in: coordinateSpace, animation: animation) { newValue in
+            completion(newValue.minY)
         }
     }
-
-    /// Reads the size of a view and updates the provided binding with the calculated size.
-    ///
-    /// This method uses a `GeometryReader` placed in the background to measure the view’s size.
-    /// The size is then passed to the specified `Binding<CGSize>`, allowing external state to react
-    /// to layout changes or dynamic sizing.
-    ///
-    /// - Parameter size: A binding to a `CGSize` that will be updated with the view's current size.
-    /// - Returns: A view that measures its own size and updates the binding accordingly.
-    func read(_ size: Binding<CGSize>) -> some View {
-        background(
-            GeometryReader { geometry in
-                Color.white.opacity(0.000001)
-                    .preference(key: SizePreferenceKey.self, value: geometry.size)
-                    .onPreferenceChange(SizePreferenceKey.self) { newSize in
-                        withAnimation {
-                            size.wrappedValue = newSize
-                        }
-                    }
-            }
-        )
-    }
-
+    
     /// Reads the initial size of the view and assigns it to the provided binding.
     /// - Parameter size: A binding to store the view’s initial size (only on first appearance).
     /// - Returns: A view that captures its size using `GeometryReader` and sets it once on appear.
-    func readInitial(_ size: Binding<CGSize>) -> some View {
+    public func readInitial(_ size: Binding<CGSize>) -> some View {
         background(
             GeometryReader { geometry in
                 Color.white.opacity(0.000001)
@@ -424,7 +402,44 @@ public extension View {
             }
         )
     }
+    
+    @ViewBuilder
+    private func read(in coordinateSpace: CoordinateSpace, animation: Animation? = nil, action: @escaping (CGRect) -> Void) -> some View {
+        if #available(iOS 16.0, *) {
+            readGeometry(in: coordinateSpace, animation: animation, action: action)
+        } else {
+            readLegacy(in: coordinateSpace, animation: animation, action: action)
+        }
+    }
+    
+    
+    @available(iOS 16.0, *)
+    private func readGeometry(in coordinateSpace: CoordinateSpace, animation: Animation? = nil, action: @escaping (CGRect) -> Void) -> some View {
+        onGeometryChange(for: CGRect.self) { proxy in
+            proxy.frame(in: coordinateSpace)
+        } action: { newValue in
+            withAnimation(animation) {
+                action(newValue)
+            }
+        }
+    }
+    
+    private func readLegacy(in coordinateSpace: CoordinateSpace, animation: Animation? = nil, action: @escaping (CGRect) -> Void) -> some View {
+        background(
+            GeometryReader { geometry in
+                Color.white.opacity(0.000001)
+                    .preference(key: RectPreferenceKey.self, value: geometry.frame(in: coordinateSpace))
+                    .onPreferenceChange(RectPreferenceKey.self) { newRect in
+                        withAnimation(animation) {
+                            action(newRect)
+                        }
+                    }
+            }
+        )
+    }
 }
+
+
 
 public struct OffsetPreferenceKey: PreferenceKey {
     public static var defaultValue: CGFloat = .zero
