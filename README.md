@@ -63,6 +63,9 @@ You can then use the provided extensions, components, and modifiers to enhance y
 - **`uiKitOnAppear(_:)`**  
   Executes a closure when the view appears using UIKit’s `viewDidAppear`.
 
+- **`onDeepLink(perform:)`**  
+  Calls one closure for custom-scheme URLs, universal links, and universal links from scanned QR codes.
+
 ### UIKit Wrappers
 
 - **`ActivityIndicator`**  
